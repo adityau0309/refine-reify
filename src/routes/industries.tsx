@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, IndustriesSection, WhatsAppButton } from "../components/recify";
+import { IndustriesSection, WhatsAppButton } from "../components/recify";
 
 export const Route = createFileRoute("/industries")({
   component: IndustriesPage,
@@ -18,7 +18,6 @@ export const Route = createFileRoute("/industries")({
 function IndustriesPage() {
   return (
     <>
-      <PageHero id="industries" />
       <IndustriesSection />
       <WhatsAppButton />
     </>
