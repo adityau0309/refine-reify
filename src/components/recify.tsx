@@ -122,7 +122,7 @@ export function WhatsAppButton() {
       href={content.global.whatsapp}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 left-6 z-50 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2.5 text-sm font-bold text-white shadow-lg transition-transform hover:scale-105"
+      className="fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2.5 text-sm font-bold text-white shadow-lg transition-transform hover:scale-105"
       aria-label="Chat with us on WhatsApp"
     >
       <MessageCircle className="h-4 w-4 fill-current" />
@@ -155,7 +155,15 @@ export function HomeHero() {
             <p className="mt-6 text-xs text-muted-foreground">{hero.trustLine}</p>
           </div>
 
-          <div className="relative aspect-video overflow-hidden rounded-3xl bg-foreground shadow-2xl">
+          <div
+            className="relative aspect-video"
+            style={{
+              maskImage:
+                "radial-gradient(72% 72% at 50% 50%, #000 32%, transparent 100%)",
+              WebkitMaskImage:
+                "radial-gradient(72% 72% at 50% 50%, #000 32%, transparent 100%)",
+            }}
+          >
             <video
               src="/assets/hero-loop.mp4"
               poster="/assets/hero-poster.jpg"
@@ -165,7 +173,18 @@ export function HomeHero() {
               playsInline
               className="h-full w-full object-cover"
             />
-            <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-foreground/10" />
+            <div
+              className="pointer-events-none absolute -inset-px"
+              style={{
+                background: [
+                  "linear-gradient(to right, var(--color-background) 0%, transparent 18%)",
+                  "linear-gradient(to left, var(--color-background) 0%, transparent 18%)",
+                  "linear-gradient(to bottom, var(--color-background) 0%, transparent 18%)",
+                  "linear-gradient(to top, var(--color-background) 0%, transparent 18%)",
+                  "radial-gradient(78% 78% at 50% 50%, transparent 45%, var(--color-background) 100%)",
+                ].join(", "),
+              }}
+            />
           </div>
         </div>
       </SectionContainer>

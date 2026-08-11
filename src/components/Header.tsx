@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Logo } from "./Logo";
 
 const navLinks = [
   { to: "/system", label: "The System" },
@@ -19,7 +20,7 @@ export function Header() {
     <header className="sticky top-4 z-50 px-4 md:px-6">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-full border bg-card/90 px-3 py-2 pl-5 shadow-sm backdrop-blur-md md:px-5 md:py-3">
         <Link to="/" className="shrink-0">
-          <span className="font-display text-lg font-bold tracking-tight md:text-xl">recify.</span>
+          <Logo />
         </Link>
 
         <div className="hidden items-center gap-1 md:flex">

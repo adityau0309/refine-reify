@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { Logo } from "./Logo";
 
 export function Footer() {
   return (
@@ -26,8 +27,8 @@ export function Footer() {
         </div>
       </div>
       <div className="mx-auto mt-8 max-w-7xl flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
-        <Link to="/" className="font-display text-lg font-bold tracking-tight text-foreground">
-          recify.
+        <Link to="/" className="text-foreground">
+          <Logo />
         </Link>
         <div className="flex items-center gap-6">
           <Link to="/security" className="hover:text-foreground">
