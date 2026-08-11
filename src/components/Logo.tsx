@@ -4,7 +4,7 @@ import { cn } from "../lib/utils";
  * Recify brand mark: a minimal circular "cash-flow" glyph — an ascending
  * stroke closing an open ring, suggesting receivables coming full circle.
  */
-export function LogoMark({ className }: { className?: string }) {
+export function LogoMark({ className }: { className?: string | undefined }) {
   return (
     <svg
       viewBox="0 0 32 32"
@@ -42,9 +42,9 @@ export function Logo({
   markClassName,
   wordClassName,
 }: {
-  className?: string;
-  markClassName?: string;
-  wordClassName?: string;
+  className?: string | undefined;
+  markClassName?: string | undefined;
+  wordClassName?: string | undefined;
 }) {
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
