@@ -187,6 +187,6 @@
 
 /* Hero video edge blend -------------------------------------------------- */
 @utility video-blend {
-  -webkit-mask-image: radial-gradient(120% 120% at 50% 50%, #000 55%, transparent 100%);
-  mask-image: radial-gradient(120% 120% at 50% 50%, #000 55%, transparent 100%);
+  -webkit-mask-image: radial-gradient(75% 75% at 50% 50%, #000 30%, transparent 100%);
+  mask-image: radial-gradient(75% 75% at 50% 50%, #000 30%, transparent 100%);
 }

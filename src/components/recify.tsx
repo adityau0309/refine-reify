@@ -169,7 +169,7 @@ export function HomeHero() {
               className="pointer-events-none absolute inset-0"
               style={{
                 background:
-                  "radial-gradient(120% 120% at 50% 50%, transparent 50%, var(--color-background) 100%)",
+                  "radial-gradient(75% 75% at 50% 50%, transparent 28%, var(--color-background) 100%)",
               }}
             />
           </div>
