@@ -157,3 +157,36 @@
     padding-bottom: 6rem;
   }
 }
+
+/* Scroll reveal ---------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(6px);
+  transition:
+    opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+
+/* Hero video edge blend -------------------------------------------------- */
+@utility video-blend {
+  -webkit-mask-image: radial-gradient(120% 120% at 50% 50%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(120% 120% at 50% 50%, #000 55%, transparent 100%);
+}
