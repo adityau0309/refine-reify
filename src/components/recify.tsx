@@ -174,10 +174,15 @@ export function HomeHero() {
               className="h-full w-full object-cover"
             />
             <div
-              className="pointer-events-none absolute inset-0"
+              className="pointer-events-none absolute -inset-px"
               style={{
-                background:
-                  "radial-gradient(75% 75% at 50% 50%, transparent 28%, var(--color-background) 100%)",
+                background: [
+                  "linear-gradient(to right, var(--color-background) 0%, transparent 18%)",
+                  "linear-gradient(to left, var(--color-background) 0%, transparent 18%)",
+                  "linear-gradient(to bottom, var(--color-background) 0%, transparent 18%)",
+                  "linear-gradient(to top, var(--color-background) 0%, transparent 18%)",
+                  "radial-gradient(78% 78% at 50% 50%, transparent 45%, var(--color-background) 100%)",
+                ].join(", "),
               }}
             />
           </div>
