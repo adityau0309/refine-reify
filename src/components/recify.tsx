@@ -155,7 +155,15 @@ export function HomeHero() {
             <p className="mt-6 text-xs text-muted-foreground">{hero.trustLine}</p>
           </div>
 
-          <div className="relative aspect-video">
+          <div
+            className="relative aspect-video"
+            style={{
+              maskImage:
+                "radial-gradient(72% 72% at 50% 50%, #000 32%, transparent 100%)",
+              WebkitMaskImage:
+                "radial-gradient(72% 72% at 50% 50%, #000 32%, transparent 100%)",
+            }}
+          >
             <video
               src="/assets/hero-loop.mp4"
               poster="/assets/hero-poster.jpg"
@@ -163,7 +171,7 @@ export function HomeHero() {
               muted
               loop
               playsInline
-              className="video-blend h-full w-full object-cover"
+              className="h-full w-full object-cover"
             />
             <div
               className="pointer-events-none absolute inset-0"
