@@ -41,14 +41,16 @@ export function Logo({
   className,
   markClassName,
   wordClassName,
+  hideMark = false,
 }: {
   className?: string | undefined;
   markClassName?: string | undefined;
   wordClassName?: string | undefined;
+  hideMark?: boolean;
 }) {
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
-      <LogoMark className={markClassName} />
+      {hideMark ? null : <LogoMark className={markClassName} />}
       <span
         className={cn(
           "font-display text-lg font-extrabold lowercase tracking-tight md:text-xl",
