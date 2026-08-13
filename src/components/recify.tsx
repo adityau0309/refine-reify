@@ -4,6 +4,8 @@ import { Check, X, ChevronDown, MessageCircle, Phone, Mail, ShieldCheck } from "
 import { cn } from "../lib/utils";
 import * as content from "../lib/site-content";
 
+export { ContactForm, StartForm } from "./LeadForms";
+
 /* -------------------------------------------------------------------------- */
 /*  Section primitives                                                        */
 /* -------------------------------------------------------------------------- */
@@ -159,9 +161,9 @@ export function HomeHero() {
             className="relative aspect-video"
             style={{
               maskImage:
-                "radial-gradient(72% 72% at 50% 50%, #000 32%, transparent 100%)",
+                "radial-gradient(78% 78% at 50% 50%, #000 55%, transparent 100%)",
               WebkitMaskImage:
-                "radial-gradient(72% 72% at 50% 50%, #000 32%, transparent 100%)",
+                "radial-gradient(78% 78% at 50% 50%, #000 55%, transparent 100%)",
             }}
           >
             <video
@@ -171,17 +173,17 @@ export function HomeHero() {
               muted
               loop
               playsInline
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover [filter:contrast(1.12)_saturate(1.15)_brightness(0.96)]"
             />
             <div
               className="pointer-events-none absolute -inset-px"
               style={{
                 background: [
-                  "linear-gradient(to right, var(--color-background) 0%, transparent 18%)",
-                  "linear-gradient(to left, var(--color-background) 0%, transparent 18%)",
-                  "linear-gradient(to bottom, var(--color-background) 0%, transparent 18%)",
-                  "linear-gradient(to top, var(--color-background) 0%, transparent 18%)",
-                  "radial-gradient(78% 78% at 50% 50%, transparent 45%, var(--color-background) 100%)",
+                  "linear-gradient(to right, var(--color-background) 0%, transparent 10%)",
+                  "linear-gradient(to left, var(--color-background) 0%, transparent 10%)",
+                  "linear-gradient(to bottom, var(--color-background) 0%, transparent 10%)",
+                  "linear-gradient(to top, var(--color-background) 0%, transparent 10%)",
+                  "radial-gradient(85% 85% at 50% 50%, transparent 68%, var(--color-background) 100%)",
                 ].join(", "),
               }}
             />
@@ -711,90 +713,6 @@ export function SecurityGrid() {
   );
 }
 
-export function ContactForm() {
-  const [form, setForm] = useState({ name: "", company: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
-
-  if (submitted) {
-    return (
-      <div className="rounded-3xl border border-border bg-card p-8 text-center md:p-12">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-          <Mail className="h-6 w-6" />
-        </div>
-        <h3 className="display-heading mt-4 text-xl">Request received</h3>
-        <p className="mt-2 text-sm text-muted-foreground">
-          We'll review your details and reply within one business day. For urgent questions, reach us on WhatsApp.
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="rounded-3xl border border-border bg-card p-6 md:p-8">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <label className="flex flex-col gap-1.5 text-sm font-medium">
-          Full name
-          <input
-            required
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none ring-ring transition-shadow focus:ring-2"
-            placeholder="Jane Smith"
-          />
-        </label>
-        <label className="flex flex-col gap-1.5 text-sm font-medium">
-          Company
-          <input
-            required
-            value={form.company}
-            onChange={(e) => setForm({ ...form, company: e.target.value })}
-            className="rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none ring-ring transition-shadow focus:ring-2"
-            placeholder="Acme Inc."
-          />
-        </label>
-      </div>
-      <label className="mt-4 flex flex-col gap-1.5 text-sm font-medium">
-        Work email
-        <input
-          required
-          type="email"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-          className="rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none ring-ring transition-shadow focus:ring-2"
-          placeholder="jane@company.com"
-        />
-      </label>
-      <label className="mt-4 flex flex-col gap-1.5 text-sm font-medium">
-        Anything we should know (optional)
-        <textarea
-          value={form.message}
-          onChange={(e) => setForm({ ...form, message: e.target.value })}
-          rows={4}
-          className="rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none ring-ring transition-shadow focus:ring-2"
-          placeholder="Tell us about your AR challenge..."
-        />
-      </label>
-      <button
-        type="submit"
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary/90 sm:w-auto"
-      >
-        Book a fit call
-        <ArrowRightIcon />
-      </button>
-      <p className="mt-4 text-sm text-muted-foreground">
-        Or email{" "}
-        <a href={content.global.email} className="font-bold text-primary hover:underline">
-          {content.global.emailLabel}
-        </a>
-      </p>
-    </form>
-  );
-}
 
 export function ContactDetails() {
   const { contactPage } = content;
@@ -849,121 +767,6 @@ export function ContactDetails() {
   );
 }
 
-export function StartForm() {
-  const [form, setForm] = useState({ business: "", invoices: "", ar: "", contact: "" });
-  const [submitted, setSubmitted] = useState(false);
-
-  const options = [
-    "Construction & Trade",
-    "Freight / Logistics",
-    "Wholesale / Distribution",
-    "Professional / Business Services",
-    "Other B2B",
-  ];
-
-  if (submitted) {
-    return (
-      <div className="mx-auto max-w-2xl rounded-3xl border border-border bg-card p-8 text-center md:p-12">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-          <Check className="h-6 w-6" />
-        </div>
-        <h3 className="display-heading mt-4 text-xl">Thanks — we'll be in touch</h3>
-        <p className="mt-2 text-sm text-muted-foreground">
-          We've received your answers. A specialist will review them and recommend the right next step within one business day.
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSubmitted(true);
-      }}
-      className="mx-auto max-w-2xl rounded-3xl border border-border bg-card p-6 md:p-10"
-    >
-      <p className="kicker">1 / 8</p>
-      <h2 className="display-heading mt-2 text-2xl">What kind of business are you?</h2>
-      <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {options.map((option) => (
-          <label
-            key={option}
-            className={cn(
-              "flex cursor-pointer items-center gap-3 rounded-xl border p-4 transition-colors",
-              form.business === option ? "border-primary bg-primary/5" : "border-border bg-background hover:bg-accent"
-            )}
-          >
-            <input
-              type="radio"
-              name="business"
-              value={option}
-              checked={form.business === option}
-              onChange={(e) => setForm({ ...form, business: e.target.value })}
-              className="h-4 w-4 accent-primary"
-            />
-            <span className="text-sm font-medium">{option}</span>
-          </label>
-        ))}
-      </div>
-
-      <div className="mt-6">
-        <label className="flex flex-col gap-1.5 text-sm font-medium">
-          How many invoices do you send each month?
-          <input
-            required
-            value={form.invoices}
-            onChange={(e) => setForm({ ...form, invoices: e.target.value })}
-            className="rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none ring-ring transition-shadow focus:ring-2"
-            placeholder="e.g. 80"
-          />
-        </label>
-      </div>
-
-      <div className="mt-4">
-        <label className="flex flex-col gap-1.5 text-sm font-medium">
-          What is your biggest AR challenge right now?
-          <textarea
-            required
-            value={form.ar}
-            onChange={(e) => setForm({ ...form, ar: e.target.value })}
-            rows={3}
-            className="rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none ring-ring transition-shadow focus:ring-2"
-            placeholder="Late payments, disputes, missing documentation..."
-          />
-        </label>
-      </div>
-
-      <div className="mt-4">
-        <label className="flex flex-col gap-1.5 text-sm font-medium">
-          Best email to reach you
-          <input
-            required
-            type="email"
-            value={form.contact}
-            onChange={(e) => setForm({ ...form, contact: e.target.value })}
-            className="rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none ring-ring transition-shadow focus:ring-2"
-            placeholder="you@company.com"
-          />
-        </label>
-      </div>
-
-      <button
-        type="submit"
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary/90"
-      >
-        Submit answers
-        <ArrowRightIcon />
-      </button>
-      <p className="mt-4 text-center text-sm text-muted-foreground">
-        Prefer to talk first?{" "}
-        <Link to="/contact" className="font-bold text-primary hover:underline">
-          Book an AR fit call
-        </Link>
-      </p>
-    </form>
-  );
-}
 
 export function ResultGrid() {
   const { outcomes } = content;
