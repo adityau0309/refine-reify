@@ -478,7 +478,8 @@ function RadioGrid({
 /*  Contact / AR health check form                                            */
 /* -------------------------------------------------------------------------- */
 
-type ContactErrors = Partial<Record<"name" | "company" | "email" | "phone" | "message" | "consent" | "form", string>>;
+type ContactErrorKey = "name" | "company" | "email" | "phone" | "message" | "consent" | "form";
+type ContactErrors = { [K in ContactErrorKey]?: string | undefined };
 
 export function ContactForm() {
   const [form, setForm] = useState({
