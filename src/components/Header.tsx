@@ -20,7 +20,7 @@ export function Header() {
     <header className="sticky top-4 z-50 px-4 md:px-6">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-full border bg-card/90 px-3 py-2 pl-5 shadow-sm backdrop-blur-md md:px-5 md:py-3">
         <Link to="/" className="shrink-0">
-          <Logo />
+          <Logo hideMark />
         </Link>
 
         <div className="hidden items-center gap-1 md:flex">
@@ -41,14 +41,6 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Link
-            to="/start"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-bold uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary/90 md:px-5 md:py-2.5"
-          >
-            Free AR health check
-            <ArrowRightIcon />
-          </Link>
-
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -58,6 +50,7 @@ export function Header() {
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
+
       </nav>
 
       {mobileOpen && (
@@ -82,24 +75,5 @@ export function Header() {
         </div>
       )}
     </header>
-  );
-}
-
-function ArrowRightIcon() {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M5 12h14" />
-      <path d="m12 5 7 7-7 7" />
-    </svg>
   );
 }
