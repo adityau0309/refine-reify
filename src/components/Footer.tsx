@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
+import logoAsset from "../assets/recify-logo.png.asset.json";
 
 export function Footer() {
   return (
@@ -26,22 +27,51 @@ export function Footer() {
           </Link>
         </div>
       </div>
-      <div className="mx-auto mt-8 max-w-7xl flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
-        <Link to="/" className="text-foreground">
-          <Logo />
-        </Link>
-        <div className="flex items-center gap-6">
-          <Link to="/security" className="hover:text-foreground">
-            Security
+
+      <div className="mx-auto mt-8 flex max-w-7xl flex-col items-center justify-between gap-6 text-sm text-muted-foreground md:flex-row">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          <Link to="/how-it-works" className="hover:text-foreground">
+            How it works
+          </Link>
+          <Link to="/industries" className="hover:text-foreground">
+            Industries
+          </Link>
+          <Link to="/about" className="hover:text-foreground">
+            About
+          </Link>
+          <Link to="/blog" className="hover:text-foreground">
+            Blog
           </Link>
           <Link to="/faq" className="hover:text-foreground">
             FAQ
           </Link>
-          <Link to="/contact" className="hover:text-foreground">
-            Contact
+          <Link to="/security" className="hover:text-foreground">
+            Security
+          </Link>
+          <Link to="/privacy-policy" className="hover:text-foreground">
+            Privacy Policy
+          </Link>
+          <Link to="/terms" className="hover:text-foreground">
+            Terms
           </Link>
         </div>
-        <p>© {new Date().getFullYear()} Recify. All rights reserved.</p>
+
+        <div className="flex items-center gap-3">
+          <img
+            src={logoAsset.url}
+            alt="Recify logo"
+            width={36}
+            height={36}
+            loading="lazy"
+            className="h-9 w-9 shrink-0 rounded-lg object-contain"
+          />
+          <div className="flex flex-col items-start">
+            <Link to="/" className="text-foreground">
+              <Logo hideMark />
+            </Link>
+            <p className="text-xs">© {new Date().getFullYear()} Recify. All rights reserved.</p>
+          </div>
+        </div>
       </div>
     </footer>
   );
