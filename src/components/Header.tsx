@@ -4,12 +4,12 @@ import { useState } from "react";
 import { Logo } from "./Logo";
 
 const navLinks = [
-  { to: "/system", label: "The System" },
+  { to: "/how-it-works", label: "How It Works" },
   { to: "/services", label: "Services" },
-  { to: "/industries", label: "Industries" },
-  { to: "/pricing", label: "Pricing" },
   { to: "/results", label: "Results" },
-  { to: "/about", label: "About" },
+  { to: "/pricing", label: "Pricing" },
+  { to: "/blog", label: "Blog" },
+  { to: "/contact", label: "Contact" },
 ];
 
 export function Header() {
@@ -18,8 +18,8 @@ export function Header() {
 
   return (
     <header className="sticky top-4 z-50 px-4 md:px-6">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-full border bg-card/90 px-3 py-2 pl-5 shadow-sm backdrop-blur-md md:px-5 md:py-3">
-        <Link to="/" className="shrink-0">
+      <nav className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-full border bg-card/90 px-3 py-2 pl-5 shadow-sm backdrop-blur-md md:flex md:justify-between md:px-5 md:py-3">
+        <Link to="/" className="min-w-0 shrink-0">
           <Logo hideMark />
         </Link>
 
@@ -40,7 +40,13 @@ export function Header() {
           })}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
+          <Link
+            to="/start"
+            className="hidden rounded-full bg-primary px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary/90 lg:inline-flex"
+          >
+            Free AR health check
+          </Link>
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -50,7 +56,6 @@ export function Header() {
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
-
       </nav>
 
       {mobileOpen && (
@@ -71,6 +76,13 @@ export function Header() {
                 </Link>
               );
             })}
+            <Link
+              to="/start"
+              onClick={() => setMobileOpen(false)}
+              className="mt-2 rounded-full bg-primary px-4 py-3 text-center text-xs font-bold uppercase tracking-wider text-primary-foreground"
+            >
+              Free AR health check
+            </Link>
           </div>
         </div>
       )}
