@@ -8,7 +8,6 @@ import {
   WhyRecify,
   ResultsStrip,
   IdealFitCompact,
-  PricingHome,
   FaqShort,
 } from "../components/home";
 
@@ -44,7 +43,6 @@ function Index() {
       <WhyRecify />
       <ResultsStrip />
       <IdealFitCompact />
-      <PricingHome />
       <FaqShort />
       <WhatsAppButton />
     </>
