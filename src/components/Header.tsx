@@ -2,12 +2,12 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Logo } from "./Logo";
+import { CalendlyModal } from "./CalendlyModal";
 
 const navLinks = [
   { to: "/how-it-works", label: "How It Works" },
   { to: "/services", label: "Services" },
   { to: "/results", label: "Results" },
-  { to: "/pricing", label: "Pricing" },
   { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
 ];
@@ -18,7 +18,7 @@ export function Header() {
 
   return (
     <header className="sticky top-4 z-50 px-4 md:px-6">
-      <nav className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-full border bg-card/90 px-3 py-2 pl-5 shadow-sm backdrop-blur-md md:flex md:justify-between md:px-5 md:py-3">
+      <nav className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-full border bg-card/90 px-3 py-2 pl-5 shadow-sm backdrop-blur-md md:flex md:justify-between">
         <Link to="/" className="min-w-0 shrink-0">
           <Logo hideMark />
         </Link>
@@ -41,12 +41,11 @@ export function Header() {
         </div>
 
         <div className="flex shrink-0 items-center gap-2">
-          <Link
-            to="/start"
-            className="hidden rounded-full bg-primary px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary/90 lg:inline-flex"
-          >
-            Free AR health check
-          </Link>
+          <CalendlyModal>
+            <button className="hidden rounded-full bg-primary px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary/90 lg:inline-flex">
+              Book a call
+            </button>
+          </CalendlyModal>
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -76,13 +75,14 @@ export function Header() {
                 </Link>
               );
             })}
-            <Link
-              to="/start"
-              onClick={() => setMobileOpen(false)}
-              className="mt-2 rounded-full bg-primary px-4 py-3 text-center text-xs font-bold uppercase tracking-wider text-primary-foreground"
-            >
-              Free AR health check
-            </Link>
+            <CalendlyModal>
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="mt-2 rounded-full bg-primary px-4 py-3 text-center text-xs font-bold uppercase tracking-wider text-primary-foreground w-full"
+              >
+                Book a call
+              </button>
+            </CalendlyModal>
           </div>
         </div>
       )}
