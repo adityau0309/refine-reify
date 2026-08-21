@@ -2,7 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Logo } from "./Logo";
-import { CalendlyModal } from "./CalendlyModal";
+import { openCalendly, useCalendlyScript } from "./CalendlyModal";
 
 const navLinks = [
   { to: "/how-it-works", label: "How It Works" },
@@ -15,6 +15,7 @@ const navLinks = [
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  useCalendlyScript();
 
   return (
     <header className="sticky top-4 z-50 px-4 md:px-6">
@@ -41,11 +42,13 @@ export function Header() {
         </div>
 
         <div className="flex shrink-0 items-center gap-2">
-          <CalendlyModal>
-            <button className="hidden rounded-full bg-primary px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary/90 lg:inline-flex">
-              Book a call
-            </button>
-          </CalendlyModal>
+          <button
+            type="button"
+            onClick={openCalendly}
+            className="hidden rounded-full bg-primary px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary/90 lg:inline-flex"
+          >
+            Book a call
+          </button>
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -75,14 +78,16 @@ export function Header() {
                 </Link>
               );
             })}
-            <CalendlyModal>
-              <button
-                onClick={() => setMobileOpen(false)}
-                className="mt-2 rounded-full bg-primary px-4 py-3 text-center text-xs font-bold uppercase tracking-wider text-primary-foreground w-full"
-              >
-                Book a call
-              </button>
-            </CalendlyModal>
+            <button
+              type="button"
+              onClick={() => {
+                setMobileOpen(false);
+                openCalendly();
+              }}
+              className="mt-2 rounded-full bg-primary px-4 py-3 text-center text-xs font-bold uppercase tracking-wider text-primary-foreground w-full"
+            >
+              Book a call
+            </button>
           </div>
         </div>
       )}

@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 
 declare global {
   interface Window {
@@ -16,6 +16,14 @@ function loadCalendlyScript(): Promise<void> {
       resolve();
       return;
     }
+    const existing = document.querySelector(
+      'script[src="https://assets.calendly.com/assets/external/widget.js"]',
+    );
+    if (existing) {
+      existing.addEventListener("load", () => resolve());
+      resolve();
+      return;
+    }
     const script = document.createElement("script");
     script.src = "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
@@ -25,24 +33,18 @@ function loadCalendlyScript(): Promise<void> {
   });
 }
 
-export function CalendlyModal({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    loadCalendlyScript();
-  }, []);
-
-  const handleClick = useCallback(async (e: React.MouseEvent) => {
-    e.preventDefault();
-    await loadCalendlyScript();
+export function openCalendly(): void {
+  loadCalendlyScript().then(() => {
     if (window.Calendly) {
       window.Calendly.initPopupWidget({ url: CALENDLY_URL });
     } else {
       window.open(CALENDLY_URL, "_blank", "noopener,noreferrer");
     }
-  }, []);
+  });
+}
 
-  return (
-    <span onClick={handleClick} className="contents">
-      {children}
-    </span>
-  );
+export function useCalendlyScript() {
+  useEffect(() => {
+    loadCalendlyScript();
+  }, []);
 }
