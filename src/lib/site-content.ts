@@ -5,7 +5,7 @@ export const hero = {
   title: "From outstanding invoices to",
   highlight: "outstanding outcomes.",
   tagline: "Your AR team, without another hire.",
-  description: "We run your invoice-to-cash work — AI for the volume, people for the judgment.",
+  description: "We run your invoice-to-cash work — AI for the volume, people for the judgment. Get Accounts Receivable (AR) moving without the headcount.",
   primaryCta: { label: "Get your free AR health check", to: "/start" },
   secondaryCta: { label: "See how it works", to: "/system" },
   trustLine: "Managed service • AI-enabled • Human-led • Built for growing B2B businesses",
@@ -263,7 +263,7 @@ export const faqTeaser = {
   items: [
     {
       question: "What exactly does Recify do?",
-      answer: "Recify manages the work between invoice and cash — payment follow-ups, reconciliation, dispute identification and documentation, escalation, customer communication and reporting — as a managed service.",
+      answer: "Recify manages the work between invoice and cash — payment follow-ups, reconciliation, dispute identification and documentation, escalation, customer communication and reporting [...]",
     },
     {
       question: "Is Recify software?",
@@ -275,7 +275,7 @@ export const faqTeaser = {
     },
     {
       question: "Will AI communicate with my customers?",
-      answer: "AI can assist with preparation and workflow, while appropriate customer communication is reviewed and managed according to your agreed process. Sensitive judgment calls and escalations are handled by people.",
+      answer: "AI can assist with preparation and workflow, while appropriate customer communication is reviewed and managed according to your agreed process. Sensitive judgment calls and escalat[...]",
     },
     {
       question: "Can Recify handle disputes?",
@@ -299,16 +299,16 @@ export const global = {
 };
 
 export const pageHeroes: Record<string, { kicker: string; title: string; highlight?: string; subtitle: string }> = {
-  system: { kicker: "The system", title: "You don't operate Recify.", highlight: "Recify operates your receivables.", subtitle: "A managed function that takes over the work between invoice and cash — with AI for the repetitive volume and specialists for the judgment." },
-  services: { kicker: "What Recify actually does", title: "Three functions.", highlight: "One managed outcome.", subtitle: "These are not software modules. They are operated services — the work we take off your team and run to a result." },
-  industries: { kicker: "Industries", title: "Built for businesses where invoices", highlight: "don't pay themselves.", subtitle: "Different industries stall payment for different reasons. We work the specific blockers that keep your revenue outstanding." },
-  pricing: { kicker: "Pricing", title: "One team. One monthly fee.", highlight: "No seat licenses.", subtitle: "Simple monthly pricing based primarily on the volume and complexity of receivables we manage. You're paying for an operated function, not software access." },
-  results: { kicker: "Results", title: "What an owned AR process", highlight: "actually changes.", subtitle: "Recify is early-stage and we don't publish numbers we can't verify. Here is what the service is designed to change, and how you'll see it." },
-  about: { kicker: "About Recify", title: "AR shouldn't require", highlight: "another full-time hire.", subtitle: "Recify was built around a simple observation: many growing B2B companies have enough receivables to need a real AR function, but not enough scale to justify building one internally." },
+  system: { kicker: "The system", title: "You don't operate Recify.", highlight: "Recify operates your receivables.", subtitle: "A managed function that takes over the work between invoice and ca[...]" },
+  services: { kicker: "What Recify actually does", title: "Three functions.", highlight: "One managed outcome.", subtitle: "These are not software modules. They are operated services — the work[...]" },
+  industries: { kicker: "Industries", title: "Built for businesses where invoices", highlight: "don't pay themselves.", subtitle: "Different industries stall payment for different reasons. We wor[...]" },
+  pricing: { kicker: "Pricing", title: "One team. One monthly fee.", highlight: "No seat licenses.", subtitle: "Simple monthly pricing based primarily on the volume and complexity of receivables [...]" },
+  results: { kicker: "Results", title: "What an owned AR process", highlight: "actually changes.", subtitle: "Recify is early-stage and we don't publish numbers we can't verify. Here is what the [...]" },
+  about: { kicker: "About Recify", title: "AR shouldn't require", highlight: "another full-time hire.", subtitle: "Recify was built around a simple observation: many growing B2B companies have en[...]" },
   faq: { kicker: "FAQ", title: "Straight", highlight: "answers.", subtitle: "What Recify does, what it doesn't do, and how the service actually operates." },
-  contact: { kicker: "Prefer to talk?", title: "Book a short conversation", highlight: "about your receivables.", subtitle: "This is a receivables review, not a sales demo. Twenty minutes to understand your AR and tell you honestly whether we can help." },
+  contact: { kicker: "Prefer to talk?", title: "Book a short conversation", highlight: "about your receivables.", subtitle: "This is a receivables review, not a sales demo. Twenty minutes to unde[...]" },
   start: { kicker: "Free AR health check", title: "Let's see if Recify", highlight: "is a fit.", subtitle: "Answer a few questions. We'll recommend the right next step." },
-  security: { kicker: "Security & trust", title: "Your receivables are sensitive.", highlight: "We treat them that way.", subtitle: "Recify works inside your financial data. These are the controls and commitments that govern how we handle it." },
+  security: { kicker: "Security & trust", title: "Your receivables are sensitive.", highlight: "We treat them that way.", subtitle: "Recify works inside your financial data. These are the control[...]" },
 };
 
 export const fullPricing = {
@@ -370,11 +370,11 @@ export const fullPricing = {
       cta: { label: "Talk to Recify", to: "/contact" },
     },
   ],
-  disclaimer: "Pricing shown is indicative for standard scopes. Final pricing may vary based on invoice volume, dispute complexity, communication requirements, integrations and operational scope. Scope is defined in the service agreement.",
+  disclaimer: "Pricing shown is indicative for standard scopes. Final pricing may vary based on invoice volume, dispute complexity, communication requirements, integrations and operational scope.[...]",
   beforeYouChoose: [
     {
       question: "What exactly does Recify do?",
-      answer: "Recify manages the work between invoice and cash — payment follow-ups, reconciliation, dispute identification and documentation, escalation, customer communication and reporting — as a managed service.",
+      answer: "Recify manages the work between invoice and cash — payment follow-ups, reconciliation, dispute identification and documentation, escalation, customer communication and reporting [...]",
     },
     {
       question: "Is Recify software?",
@@ -386,7 +386,7 @@ export const fullPricing = {
     },
     {
       question: "Will AI communicate with my customers?",
-      answer: "AI can assist with preparation and workflow, while appropriate customer communication is reviewed and managed according to your agreed process. Sensitive judgment calls and escalations are handled by people.",
+      answer: "AI can assist with preparation and workflow, while appropriate customer communication is reviewed and managed according to your agreed process. Sensitive judgment calls and escalat[...]",
     },
   ],
   nextStep: {
@@ -400,7 +400,7 @@ export const fullPricing = {
 export const fullFaq = [
   {
     question: "What exactly does Recify do?",
-    answer: "Recify manages the work between invoice and cash — payment follow-ups, reconciliation, dispute identification and documentation, escalation, customer communication and reporting — as a managed service.",
+    answer: "Recify manages the work between invoice and cash — payment follow-ups, reconciliation, dispute identification and documentation, escalation, customer communication and reporting [...]",
   },
   {
     question: "Is Recify software?",
@@ -412,7 +412,7 @@ export const fullFaq = [
   },
   {
     question: "Will AI communicate with my customers?",
-    answer: "AI can assist with preparation and workflow, while appropriate customer communication is reviewed and managed according to your agreed process. Sensitive judgment calls and escalations are handled by people.",
+    answer: "AI can assist with preparation and workflow, while appropriate customer communication is reviewed and managed according to your agreed process. Sensitive judgment calls and escalatio[...]",
   },
   {
     question: "Can Recify handle disputes?",
@@ -454,7 +454,7 @@ export const securityPage = {
     "Client data is not used to train public AI models",
   ],
   disclaimer:
-    "Recify does not currently hold SOC 2, ISO 27001 or similar third-party certifications, and we won't claim otherwise. The practices above are the controls we operate and commit to contractually through our service agreement and Data Processing Agreement.",
+    "Recify does not currently hold SOC 2, ISO 27001 or similar third-party certifications, and we won't claim otherwise. The practices above are the controls we operate and commit to contractual[...]",
 };
 
 export const contactPage = {
