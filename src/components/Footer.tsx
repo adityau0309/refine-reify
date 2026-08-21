@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
-import { Instagram, Linkedin, Twitter } from "lucide-react";
+import { Instagram } from "lucide-react";
 import logoAsset from "../assets/recify-logo.png.asset.json";
 
 export function Footer() {
@@ -76,24 +76,6 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-4 text-muted-foreground">
-            <a
-              href="https://www.linkedin.com/company/recify"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-foreground"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
-            <a
-              href="https://twitter.com/recify"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-foreground"
-              aria-label="Twitter"
-            >
-              <Twitter className="h-5 w-5" />
-            </a>
             <a
               href="https://www.instagram.com/recify.ar/"
               target="_blank"
