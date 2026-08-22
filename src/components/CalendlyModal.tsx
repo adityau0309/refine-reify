@@ -1,9 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 declare global {
   interface Window {
     Calendly?: {
       initPopupWidget: (options: { url: string }) => void;
+      initInlineWidget: (options: {
+        url: string;
+        parentElement: HTMLElement;
+      }) => void;
     };
   }
 }
@@ -47,4 +51,36 @@ export function useCalendlyScript() {
   useEffect(() => {
     loadCalendlyScript();
   }, []);
+}
+
+export function CalendlyInline() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    loadCalendlyScript().then(() => {
+      if (cancelled || !containerRef.current || !window.Calendly) return;
+      // If the auto-init hasn't populated the widget yet (e.g. the script was
+      // already loaded before this element mounted), initialize it explicitly.
+      if (!containerRef.current.querySelector("iframe")) {
+        window.Calendly.initInlineWidget({
+          url: CALENDLY_URL,
+          parentElement: containerRef.current,
+        });
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className="calendly-inline-widget"
+      data-url={CALENDLY_URL}
+      aria-label="Schedule a call with Recify"
+      style={{ minWidth: "320px", height: "700px" }}
+    />
+  );
 }
