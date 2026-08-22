@@ -147,8 +147,7 @@ function BlogPostPage() {
                   .map((relatedPost) => (
                     <Link
                       key={relatedPost.slug}
-                      to="/blog/$slug"
-                      params={{ slug: relatedPost.slug }}
+                      to={`/blog/${relatedPost.slug}`}
                       className="group rounded-2xl border border-border bg-card p-6 transition-colors hover:bg-accent"
                     >
                       <span className="kicker text-primary text-xs">{relatedPost.category}</span>

@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { SectionContainer, SectionHeader, ButtonPrimary, WhatsAppButton } from "../../components/recify";
-import { blogPosts } from "../../lib/blog-posts";
+import { SectionContainer, SectionHeader, ButtonPrimary, WhatsAppButton } from "../components/recify";
+import { blogPosts } from "../lib/blog-posts";
 
-export const Route = createFileRoute("/blog/")({
+export const Route = createFileRoute("/blog")({
   component: BlogPage,
   head: () => ({
     meta: [
@@ -34,8 +34,7 @@ function BlogPage() {
               {blogPosts.map((post) => (
                 <Link
                   key={post.slug}
-                  to="/blog/$slug"
-                  params={{ slug: post.slug }}
+                  to={`/blog/${post.slug}`}
                   className="group rounded-3xl border border-border bg-card p-6 md:p-8 transition-all hover:border-primary hover:shadow-lg"
                 >
                   <span className="kicker text-primary text-xs font-semibold">{post.category}</span>
