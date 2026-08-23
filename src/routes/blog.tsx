@@ -9,7 +9,7 @@ export const Route = createFileRoute("/blog")({
       { title: "Blog — Recify" },
       { name: "description", content: "Notes on accounts receivable operations, dispute resolution and cash flow from the Recify team." },
       { property: "og:title", content: "Blog — Recify" },
-      { property: "og:description", content: "Notes on accounts receivable operations, payment blockers and cash flow." },
+      { property: "og:description", content: "Notes on accounts receivable operations, dispute resolution and cash flow." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
