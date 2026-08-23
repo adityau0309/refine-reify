@@ -79,7 +79,7 @@ Accounts receivable earns its place on the asset side of your balance sheet. Whe
 
 ---
 
-*Recify helps B2B companies get their stuck and overdue receivables moving — not with more automated reminders, but by doing the actual work of finding what's blocking each invoice and resolving it. If you've got a stack of invoices your team has already given up chasing, [Recify](https://recify.in) will take a look.*`,
+*Recify helps B2B companies get their stuck and overdue receivables moving — not with more automated reminders, but by doing the actual work of finding what's blocking each invoice and resolving it. If you've got a stack of invoices your team has already given up chasing, [Recify](https://recify.in/) will take a look.*`,
   },
   {
     slug: "accounts-receivable-vs-accounts-payable",
