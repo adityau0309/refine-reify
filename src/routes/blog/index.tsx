@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionContainer, SectionHeader, ButtonPrimary, WhatsAppButton } from "../../components/recify";
 import { blogPosts } from "../../lib/blog-posts";
-
 export const Route = createFileRoute("/blog/")({
   component: BlogPage,
   head: () => ({
@@ -15,7 +14,6 @@ export const Route = createFileRoute("/blog/")({
     ],
   }),
 });
-
 function BlogPage() {
   return (
     <>
@@ -62,7 +60,6 @@ function BlogPage() {
               <p className="text-sm text-muted-foreground">Articles in preparation.</p>
             </div>
           )}
-
           <div className="mt-12 flex flex-col items-center gap-4">
             <ButtonPrimary to="/start">Get your free AR health check</ButtonPrimary>
             <Link to="/" className="kicker hover:text-primary">
