@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { SectionContainer, SectionHeader, ButtonPrimary, WhatsAppButton } from "../components/recify";
-import { blogPosts } from "../lib/blog-posts";
+import { SectionContainer, SectionHeader, ButtonPrimary, WhatsAppButton } from "../../components/recify";
+import { blogPosts } from "../../lib/blog-posts";
 
 export const Route = createFileRoute("/blog/")({
   component: BlogPage,
