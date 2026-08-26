@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  AbsoluteFill,
-  Audio,
-  Composition,
-  interpolate,
-  spring,
-  useCurrentFrame,
-  useVideoConfig,
-} from 'remotion';
+import {AbsoluteFill, Composition, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 
 const BG = '#07090d';
 const MUTED = '#8b93a5';
@@ -16,9 +8,13 @@ const GREEN = '#5ee6a8';
 
 const ease = (n: number) => 1 - Math.pow(1 - n, 3);
 
-const Fade: React.FC<{from: number; to?: number; children: React.ReactNode}> = ({from, to = 1, children}) => {
+const Fade: React.FC<{from: number; to: number; children: React.ReactNode}> = ({from, to, children}) => {
   const frame = useCurrentFrame();
-  const opacity = interpolate(frame, [from, from + 12, from + 20, to], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const {fps} = useVideoConfig();
+  const start = from * fps;
+  const end = to * fps;
+  const fade = Math.min(14, Math.max(1, (end - start) / 5));
+  const opacity = interpolate(frame, [start, start + fade, end - fade, end], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return <div style={{position: 'absolute', inset: 0, opacity}}>{children}</div>;
 };
 
@@ -47,7 +43,6 @@ const App: React.FC = () => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
-
   const glow = interpolate(Math.sin(frame / 18), [-1, 1], [0.18, 0.42]);
   const titleIn = spring({frame, fps, config: {damping: 18, stiffness: 100}});
   const money = interpolate(ease(Math.max(0, Math.min(1, (t - 5.5) / 1.2))), [0,1], [0, 327000]);
@@ -58,7 +53,6 @@ const App: React.FC = () => {
       <div style={{position:'absolute', inset:0, background:'radial-gradient(circle at 50% 15%, rgba(94,230,168,.12), transparent 35%), radial-gradient(circle at 10% 90%, rgba(94,230,168,.06), transparent 30%)'}} />
       <div style={{position:'absolute', width:900, height:900, borderRadius:'50%', background:`rgba(94,230,168,${glow*.16})`, filter:'blur(100px)', left:-250, top:500}} />
 
-      {/* 0–4.5s: hook */}
       {t < 4.7 && <Fade from={0} to={4.7}>
         <div style={{height:'100%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', textAlign:'center', padding:80}}>
           <Pill>THE CASH FLOW PROBLEM</Pill>
@@ -69,7 +63,6 @@ const App: React.FC = () => {
         </div>
       </Fade>}
 
-      {/* 4.2–9.8s: AR accumulation */}
       {t >= 4.0 && t < 10.2 && <Fade from={4.1} to={10.2}>
         <div style={{height:'100%', position:'relative'}}>
           <div style={{position:'absolute', left:72, top:110, fontSize:30, color:MUTED}}>REVENUE</div>
@@ -85,7 +78,6 @@ const App: React.FC = () => {
         </div>
       </Fade>}
 
-      {/* 9.6–13.8s: tension */}
       {t >= 9.5 && t < 14.0 && <Fade from={9.6} to={14.0}>
         <div style={{height:'100%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', textAlign:'center', padding:70}}>
           <div style={{fontSize:32, color:MUTED, letterSpacing:2}}>YOU DON'T ALWAYS NEED MORE SALES.</div>
@@ -93,7 +85,6 @@ const App: React.FC = () => {
         </div>
       </Fade>}
 
-      {/* 13.4–16.5s: transformation */}
       {t >= 13.4 && t < 17.0 && <Fade from={13.5} to={17.0}>
         <div style={{height:'100%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
           <div style={{fontSize:28, color:MUTED, letterSpacing:3}}>FROM OUTSTANDING</div>
@@ -105,7 +96,6 @@ const App: React.FC = () => {
         </div>
       </Fade>}
 
-      {/* 16.4–20s: brand */}
       {t >= 16.3 && <Fade from={16.4} to={20}>
         <div style={{height:'100%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', textAlign:'center'}}>
           <div style={{fontSize:110, fontWeight:900, letterSpacing:-5}}>RECIFY</div>
@@ -120,13 +110,5 @@ const App: React.FC = () => {
 };
 
 export const Root: React.FC = () => (
-  <Composition
-    id="RecifyMarketing"
-    component={App}
-    durationInFrames={20 * 30}
-    fps={30}
-    width={1080}
-    height={1920}
-    defaultProps={{}}
-  />
+  <Composition id="RecifyMarketing" component={App} durationInFrames={20 * 30} fps={30} width={1080} height={1920} defaultProps={{}} />
 );
