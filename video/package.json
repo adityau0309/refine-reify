@@ -1,0 +1,21 @@
+{
+  "name": "recify-marketing-video",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "remotion studio",
+    "render": "remotion render src/index.tsx RecifyMarketing out/recify-marketing.mp4",
+    "preview": "remotion studio src/index.tsx"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.517",
+    "@remotion/transitions": "4.0.517",
+    "remotion": "4.0.517",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.7",
+    "typescript": "5.9.3"
+  }
+}
