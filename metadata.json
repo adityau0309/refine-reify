@@ -1,0 +1,5 @@
+{
+  "name": "Recify",
+  "description": "Recify runs your invoice-to-cash work — AI for the volume, people for the judgment. Get outstanding revenue moving without adding AR headcount.",
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

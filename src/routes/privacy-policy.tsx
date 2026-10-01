@@ -1,5 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { SectionContainer, SectionHeader, ButtonSecondary, WhatsAppButton } from "../components/recify";
+import {
+  SectionContainer,
+  SectionHeader,
+  ButtonSecondary,
+  WhatsAppButton,
+} from "../components/recify";
 import { securityPage, global } from "../lib/site-content";
 
 export const Route = createFileRoute("/privacy-policy")({
@@ -7,9 +12,15 @@ export const Route = createFileRoute("/privacy-policy")({
   head: () => ({
     meta: [
       { title: "Privacy Policy — Recify" },
-      { name: "description", content: "How Recify collects, uses, stores and deletes the information you share with us." },
+      {
+        name: "description",
+        content: "How Recify collects, uses, stores and deletes the information you share with us.",
+      },
       { property: "og:title", content: "Privacy Policy — Recify" },
-      { property: "og:description", content: "How Recify collects, uses, stores and deletes your information." },
+      {
+        property: "og:description",
+        content: "How Recify collects, uses, stores and deletes your information.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -30,12 +41,14 @@ function PrivacyPage() {
           />
           <div className="mx-auto mt-12 max-w-3xl space-y-6">
             <Block title="Information we collect">
-              Contact and business details you submit through our forms (name, company, email, phone) and the receivables
-              information you choose to share with us for an assessment or for service delivery.
+              Contact and business details you submit through our forms (name, company, email,
+              phone) and the receivables information you choose to share with us for an assessment
+              or for service delivery.
             </Block>
             <Block title="How we use it">
-              Only to respond to your enquiry, prepare the requested assessment and operate the agreed service. Your data is
-              handled confidentially and only used for the agreed assessment.
+              Only to respond to your enquiry, prepare the requested assessment and operate the
+              agreed service. Your data is handled confidentially and only used for the agreed
+              assessment.
             </Block>
             <Block title="Controls we operate">
               <ul className="mt-3 space-y-2">
@@ -49,8 +62,8 @@ function PrivacyPage() {
             </Block>
             <Block title="What we don't claim">{securityPage.disclaimer}</Block>
             <Block title="Retention, deletion and contact">
-              Data retention and deletion follow a defined process, and access is revoked at offboarding. For access,
-              correction or deletion requests, contact{" "}
+              Data retention and deletion follow a defined process, and access is revoked at
+              offboarding. For access, correction or deletion requests, contact{" "}
               <a href={global.email} className="font-bold text-primary hover:underline">
                 {global.emailLabel}
               </a>

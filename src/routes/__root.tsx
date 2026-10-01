@@ -80,6 +80,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "Recify — Managed B2B Accounts Receivable & Revenue Recovery" },
+      {
+        name: "description",
+        content:
+          "Recify runs your invoice-to-cash work — AI for the volume, people for the judgment. Get outstanding revenue moving without adding AR headcount.",
+      },
+      {
+        property: "og:title",
+        content: "Recify — Managed B2B Accounts Receivable & Revenue Recovery",
+      },
+      {
+        property: "og:description",
+        content:
+          "Recify runs your invoice-to-cash work — AI for the volume, people for the judgment. Get outstanding revenue moving without adding AR headcount.",
+      },
       { name: "author", content: "Recify" },
       { property: "og:site_name", content: "Recify" },
       { property: "og:type", content: "website" },

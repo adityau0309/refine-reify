@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, StepsSection, DifferentiatorSection, ModelSection, WhatsAppButton } from "../components/recify";
+import {
+  PageHero,
+  StepsSection,
+  DifferentiatorSection,
+  ModelSection,
+  WhatsAppButton,
+} from "../components/recify";
 
 export const Route = createFileRoute("/system")({
   component: SystemPage,

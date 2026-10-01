@@ -11,7 +11,8 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "is-accounts-receivable-an-asset",
     title: "Is Accounts Receivable an Asset? (Yes — But That's Not the Full Story)",
-    excerpt: "Yes, accounts receivable is an asset. But calling it that and treating it like one are two different things — and the gap between them is where a lot of businesses quietly bleed cash.",
+    excerpt:
+      "Yes, accounts receivable is an asset. But calling it that and treating it like one are two different things — and the gap between them is where a lot of businesses quietly bleed cash.",
     date: "2024-08-21",
     category: "Revenue Recovery",
     content: `If you've ever stared at your balance sheet and wondered why it says you're doing fine while your bank account tells a different story, you've already bumped into the real answer to this question.
@@ -84,7 +85,8 @@ Accounts receivable earns its place on the asset side of your balance sheet. Whe
   {
     slug: "accounts-receivable-vs-accounts-payable",
     title: "Accounts Receivable vs. Accounts Payable: What's Actually the Difference",
-    excerpt: "People mix these up constantly. Accounts receivable is money owed to you. Accounts payable is money you owe someone else. That's really it. But here's why the difference matters in practice.",
+    excerpt:
+      "People mix these up constantly. Accounts receivable is money owed to you. Accounts payable is money you owe someone else. That's really it. But here's why the difference matters in practice.",
     date: "2024-08-21",
     category: "Cash Flow Intelligence",
     content: `People mix these up constantly. Even folks who've worked in finance for years pause for half a second before answering. Part of it is just the names — receivable, payable, they're basically mirror images of each other, and your brain has to do a tiny bit of work to remember which side you're on.

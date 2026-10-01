@@ -3,6 +3,7 @@ import { WhatsAppButton } from "../components/recify";
 import {
   Hero,
   WhatRecifyIs,
+  InvoiceStuckEntry,
   SystemCards,
   HowItWorksFlow,
   WhyRecify,
@@ -21,7 +22,10 @@ export const Route = createFileRoute("/")({
         content:
           "Recify runs your invoice-to-cash work — AI for the volume, people for the judgment. Get outstanding revenue moving without adding AR headcount.",
       },
-      { property: "og:title", content: "Recify — Managed B2B Accounts Receivable & Revenue Recovery" },
+      {
+        property: "og:title",
+        content: "Recify — Managed B2B Accounts Receivable & Revenue Recovery",
+      },
       {
         property: "og:description",
         content: "Get your outstanding revenue moving — without adding AR headcount.",
@@ -38,6 +42,7 @@ function Index() {
     <>
       <Hero />
       <WhatRecifyIs />
+      <InvoiceStuckEntry />
       <SystemCards />
       <HowItWorksFlow />
       <WhyRecify />

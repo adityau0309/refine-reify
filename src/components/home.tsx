@@ -109,7 +109,10 @@ export function WhatRecifyIs() {
         />
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
           {whatCards.map((card) => (
-            <div key={card.number} className="rounded-3xl border border-border bg-background p-6 md:p-8">
+            <div
+              key={card.number}
+              className="rounded-3xl border border-border bg-background p-6 md:p-8"
+            >
               <span className="display-heading text-2xl text-primary">{card.number}</span>
               <h3 className="mt-3 font-display text-lg font-bold md:text-xl">{card.label}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{card.description}</p>
@@ -122,10 +125,50 @@ export function WhatRecifyIs() {
 }
 
 /* -------------------------------------------------------------------------- */
+/*  2.5 Invoice Stuck Entry                                                   */
+/* -------------------------------------------------------------------------- */
+
+export function InvoiceStuckEntry() {
+  return (
+    <section className="py-12 md:py-16 bg-background">
+      <SectionContainer>
+        <div className="rounded-3xl border border-primary/30 bg-card p-6 md:p-10 shadow-sm">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div className="max-w-2xl">
+              <span className="kicker text-primary">Free Operational Tool</span>
+              <h2 className="display-heading mt-2 text-2xl md:text-3xl text-foreground">
+                Invoice stuck with a customer?
+              </h2>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                Find out why your customer's AP team rejected it—and what needs to happen to get it
+                paid. Check PO mismatches, missing goods receipts, tolerance variances, and portal
+                rules.
+              </p>
+            </div>
+            <div className="shrink-0">
+              <Link
+                to="/tools/invoice-rejection-decoder"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-primary-foreground transition-all hover:bg-primary/90"
+              >
+                Decode an invoice rejection →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </SectionContainer>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
 /*  3. The 3-part system (progressive disclosure)                             */
 /* -------------------------------------------------------------------------- */
 
-const systemNames = ["Revenue Recovery Engine", "Dispute Resolution System", "Cash Flow Intelligence"];
+const systemNames = [
+  "Revenue Recovery Engine",
+  "Dispute Resolution System",
+  "Cash Flow Intelligence",
+];
 
 export function SystemCards() {
   const [open, setOpen] = useState<number | null>(null);
@@ -134,7 +177,12 @@ export function SystemCards() {
   return (
     <section className="section-padding">
       <SectionContainer>
-        <SectionHeader kicker={services.kicker} title={services.title} align="center" subtitle={services.subtitle} />
+        <SectionHeader
+          kicker={services.kicker}
+          title={services.title}
+          align="center"
+          subtitle={services.subtitle}
+        />
         <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-3">
           {services.items.map((item, index) => {
             const isOpen = open === index;
@@ -143,13 +191,15 @@ export function SystemCards() {
                 key={item.number}
                 className={cn(
                   "flex flex-col rounded-3xl border bg-card p-6 transition-colors md:p-8",
-                  isOpen ? "border-primary" : "border-border"
+                  isOpen ? "border-primary" : "border-border",
                 )}
               >
                 <span className="display-heading text-3xl text-primary">{item.number}</span>
                 <h3 className="mt-3 font-display text-xl font-bold">{systemNames[index]}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
-                <p className="mt-4 border-t border-border pt-4 text-sm font-medium">{item.outcome}</p>
+                <p className="mt-4 border-t border-border pt-4 text-sm font-medium">
+                  {item.outcome}
+                </p>
 
                 <button
                   type="button"
@@ -164,7 +214,10 @@ export function SystemCards() {
                 {isOpen && (
                   <ul className="mt-4 space-y-2">
                     {item.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <li
+                        key={feature}
+                        className="flex items-start gap-2 text-sm text-muted-foreground"
+                      >
                         <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                         {feature}
                       </li>
@@ -195,7 +248,10 @@ export function HowItWorksFlow() {
         <SectionHeader kicker={steps.kicker} title={steps.title} align="center" />
         <ol className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {steps.items.map((step) => (
-            <li key={step.number} className="relative rounded-3xl border border-border bg-background p-6">
+            <li
+              key={step.number}
+              className="relative rounded-3xl border border-border bg-background p-6"
+            >
               <span className="kicker text-primary">{step.number}</span>
               <h3 className="mt-2 font-display text-lg font-bold">{step.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>
@@ -333,7 +389,7 @@ export function PricingHome() {
                 key={tier.name}
                 className={cn(
                   "relative flex h-full flex-col rounded-3xl border bg-background p-6 md:p-8",
-                  tier.recommended ? "border-primary shadow-sm" : "border-border"
+                  tier.recommended ? "border-primary shadow-sm" : "border-border",
                 )}
               >
                 {tier.recommended && (
@@ -351,7 +407,10 @@ export function PricingHome() {
 
                 <ul className="mt-6 space-y-2">
                   {(isOpen ? tier.features : visible).map((feature) => (
-                    <li key={feature} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <li
+                      key={feature}
+                      className="flex items-start gap-2 text-sm text-muted-foreground"
+                    >
                       <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                       {feature}
                     </li>
@@ -366,7 +425,9 @@ export function PricingHome() {
                     className="kicker mt-4 inline-flex items-center gap-2 text-primary transition-opacity hover:opacity-70"
                   >
                     {isOpen ? "Hide details" : `View all ${tier.features.length} inclusions`}
-                    <ChevronDown className={cn("h-4 w-4 transition-transform", isOpen && "rotate-180")} />
+                    <ChevronDown
+                      className={cn("h-4 w-4 transition-transform", isOpen && "rotate-180")}
+                    />
                   </button>
                 )}
 
@@ -379,7 +440,9 @@ export function PricingHome() {
             );
           })}
         </div>
-        <p className="mx-auto mt-10 max-w-3xl text-center text-xs text-muted-foreground">{fullPricing.disclaimer}</p>
+        <p className="mx-auto mt-10 max-w-3xl text-center text-xs text-muted-foreground">
+          {fullPricing.disclaimer}
+        </p>
         <div className="mt-8 text-center">
           <ButtonSecondary to="/pricing">See full pricing</ButtonSecondary>
         </div>
@@ -414,12 +477,14 @@ export function FaqShort() {
                 <ChevronDown
                   className={cn(
                     "h-5 w-5 shrink-0 text-muted-foreground transition-transform",
-                    open === index && "rotate-180"
+                    open === index && "rotate-180",
                   )}
                 />
               </button>
               {open === index && (
-                <div className="px-6 pb-5 text-sm text-muted-foreground md:px-8 md:pb-6">{item.answer}</div>
+                <div className="px-6 pb-5 text-sm text-muted-foreground md:px-8 md:pb-6">
+                  {item.answer}
+                </div>
               )}
             </div>
           ))}

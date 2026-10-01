@@ -1,5 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SectionContainer, SectionHeader, FaqAccordion, WhatsAppButton } from "../components/recify";
+import {
+  SectionContainer,
+  SectionHeader,
+  FaqAccordion,
+  WhatsAppButton,
+} from "../components/recify";
 import { fullFaq } from "../lib/site-content";
 
 export const Route = createFileRoute("/faq")({
@@ -9,7 +14,10 @@ export const Route = createFileRoute("/faq")({
       { title: "FAQ — Recify" },
       { name: "description", content: "Straight answers about what Recify does and how it works." },
       { property: "og:title", content: "FAQ — Recify" },
-      { property: "og:description", content: "Straight answers about what Recify does and how it works." },
+      {
+        property: "og:description",
+        content: "Straight answers about what Recify does and how it works.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

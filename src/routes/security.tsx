@@ -8,7 +8,10 @@ export const Route = createFileRoute("/security")({
       { title: "Security — Recify" },
       { name: "description", content: "Your receivables are sensitive. We treat them that way." },
       { property: "og:title", content: "Security — Recify" },
-      { property: "og:description", content: "Your receivables are sensitive. We treat them that way." },
+      {
+        property: "og:description",
+        content: "Your receivables are sensitive. We treat them that way.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

@@ -127,7 +127,10 @@ function BlogPostPage() {
                       if (paragraph.includes("*") || paragraph.includes("[")) {
                         return `<p>${paragraph
                           .replace(/\*([^*]+)\*/g, "<em>$1</em>")
-                          .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="font-semibold text-primary hover:underline">$1</a>')}</p>`;
+                          .replace(
+                            /\[([^\]]+)\]\(([^)]+)\)/g,
+                            '<a href="$2" class="font-semibold text-primary hover:underline">$1</a>',
+                          )}</p>`;
                       }
                       // Regular paragraphs
                       return `<p>${paragraph}</p>`;

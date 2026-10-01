@@ -6,6 +6,7 @@ import { openCalendly, useCalendlyScript } from "./CalendlyModal";
 
 const navLinks = [
   { to: "/how-it-works", label: "How It Works" },
+  { to: "/tools/invoice-rejection-decoder", label: "Decoder" },
   { to: "/results", label: "Results" },
   { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
@@ -57,7 +58,9 @@ export function Header() {
               aria-haspopup="menu"
             >
               Services
-              <ChevronDown className={`h-3.5 w-3.5 transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
+              <ChevronDown
+                className={`h-3.5 w-3.5 transition-transform ${servicesOpen ? "rotate-180" : ""}`}
+              />
             </button>
             {servicesOpen && (
               <div className="absolute left-1/2 top-full z-50 mt-2 w-56 -translate-x-1/2 rounded-2xl border bg-card p-2 shadow-xl">

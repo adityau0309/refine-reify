@@ -10,7 +10,13 @@ export { ContactForm, StartForm } from "./LeadForms";
 /*  Section primitives                                                        */
 /* -------------------------------------------------------------------------- */
 
-export function SectionContainer({ children, className }: { children: React.ReactNode; className?: string }) {
+export function SectionContainer({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return <div className={cn("mx-auto max-w-7xl px-4 md:px-6", className)}>{children}</div>;
 }
 
@@ -28,7 +34,13 @@ export function SectionHeader({
   align?: "left" | "center";
 }) {
   return (
-    <div className={cn("max-w-3xl", align === "center" && "mx-auto", align === "center" ? "text-center" : "text-left")}>
+    <div
+      className={cn(
+        "max-w-3xl",
+        align === "center" && "mx-auto",
+        align === "center" ? "text-center" : "text-left",
+      )}
+    >
       {kicker && <p className="kicker mb-3">{kicker}</p>}
       <h2 className="display-heading text-3xl md:text-4xl lg:text-5xl">
         <Highlight text={title} highlight={highlight} />
@@ -67,7 +79,7 @@ export function ButtonPrimary({
       to={to}
       className={cn(
         "inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold uppercase tracking-wider text-primary-foreground transition-colors hover:bg-primary/90",
-        className
+        className,
       )}
     >
       {children}
@@ -90,7 +102,7 @@ export function ButtonSecondary({
       to={to}
       className={cn(
         "inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm font-bold uppercase tracking-wider text-foreground transition-colors hover:bg-foreground/5",
-        className
+        className,
       )}
     >
       {children}
@@ -145,8 +157,7 @@ export function HomeHero() {
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12">
           <div className="max-w-2xl">
             <h1 className="display-heading text-4xl md:text-5xl lg:text-6xl">
-              {hero.title}{" "}
-              <span className="text-primary">{hero.highlight}</span>
+              {hero.title} <span className="text-primary">{hero.highlight}</span>
             </h1>
             <p className="kicker mt-4 text-foreground">{hero.tagline}</p>
             <p className="mt-4 text-lg text-muted-foreground md:text-xl">{hero.description}</p>
@@ -160,10 +171,8 @@ export function HomeHero() {
           <div
             className="relative aspect-video"
             style={{
-              maskImage:
-                "radial-gradient(78% 78% at 50% 50%, #000 55%, transparent 100%)",
-              WebkitMaskImage:
-                "radial-gradient(78% 78% at 50% 50%, #000 55%, transparent 100%)",
+              maskImage: "radial-gradient(78% 78% at 50% 50%, #000 55%, transparent 100%)",
+              WebkitMaskImage: "radial-gradient(78% 78% at 50% 50%, #000 55%, transparent 100%)",
             }}
           >
             <video
@@ -203,8 +212,12 @@ export function TrustPill() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
             {trustPill.items.map((item) => (
               <div key={item.number} className="flex items-baseline gap-3">
-                <span className="display-heading text-2xl text-muted-foreground">{item.number}</span>
-                <span className="font-display text-sm font-bold uppercase tracking-wider">{item.label}</span>
+                <span className="display-heading text-2xl text-muted-foreground">
+                  {item.number}
+                </span>
+                <span className="font-display text-sm font-bold uppercase tracking-wider">
+                  {item.label}
+                </span>
               </div>
             ))}
           </div>
@@ -234,7 +247,9 @@ export function ProblemSection() {
             {problem.issues.map((issue) => (
               <div key={issue.title} className="rounded-2xl border border-border bg-card p-6">
                 <h3 className="font-display text-lg font-bold">{issue.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{issue.description}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {issue.description}
+                </p>
               </div>
             ))}
           </div>
@@ -249,7 +264,12 @@ export function ServicesSection() {
   return (
     <section className="section-padding">
       <SectionContainer>
-        <SectionHeader kicker={services.kicker} title={services.title} subtitle={services.subtitle} align="center" />
+        <SectionHeader
+          kicker={services.kicker}
+          title={services.title}
+          subtitle={services.subtitle}
+          align="center"
+        />
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
           {services.items.map((item) => (
             <div
@@ -289,11 +309,7 @@ export function DifferentiatorSection() {
   return (
     <section className="section-padding">
       <SectionContainer>
-        <SectionHeader
-          kicker={differentiator.kicker}
-          title={differentiator.title}
-          align="center"
-        />
+        <SectionHeader kicker={differentiator.kicker} title={differentiator.title} align="center" />
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="rounded-3xl border border-border bg-card p-6 md:p-8">
             <h3 className="font-display text-xl font-bold">{differentiator.ai.title}</h3>
@@ -335,10 +351,15 @@ export function ModelSection() {
             <div className="p-4 text-sm font-bold uppercase tracking-wider text-muted-foreground md:p-6">
               Traditional software
             </div>
-            <div className="p-4 text-sm font-bold uppercase tracking-wider text-primary md:p-6">Recify</div>
+            <div className="p-4 text-sm font-bold uppercase tracking-wider text-primary md:p-6">
+              Recify
+            </div>
           </div>
           {model.rows.map((row, index) => (
-            <div key={index} className="grid grid-cols-2 divide-x divide-border border-t border-border">
+            <div
+              key={index}
+              className="grid grid-cols-2 divide-x divide-border border-t border-border"
+            >
               <div className="p-4 text-sm text-muted-foreground md:p-6">{row.traditional}</div>
               <div className="bg-accent/30 p-4 text-sm font-medium md:p-6">{row.recify}</div>
             </div>
@@ -361,7 +382,9 @@ export function StepsSection() {
             <div key={item.number} className="rounded-3xl border border-border bg-card p-6 md:p-8">
               <span className="display-heading text-3xl text-primary">{item.number}</span>
               <h3 className="mt-4 font-display text-xl font-bold">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
@@ -376,7 +399,12 @@ export function IndustriesSection() {
   return (
     <section className="section-padding">
       <SectionContainer>
-        <SectionHeader kicker={industries.kicker} title={industries.title} subtitle={industries.subtitle} align="center" />
+        <SectionHeader
+          kicker={industries.kicker}
+          title={industries.title}
+          subtitle={industries.subtitle}
+          align="center"
+        />
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
           {industries.items.map((item) => (
             <div
@@ -421,7 +449,9 @@ export function IdealFitSection() {
         <SectionHeader kicker={idealFit.kicker} title={idealFit.title} align="center" />
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="rounded-3xl border border-border bg-card p-6 md:p-8">
-            <h3 className="font-display text-lg font-bold uppercase tracking-wider">A strong fit</h3>
+            <h3 className="font-display text-lg font-bold uppercase tracking-wider">
+              A strong fit
+            </h3>
             <ul className="mt-4 space-y-2">
               {idealFit.strong.map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm">
@@ -432,7 +462,9 @@ export function IdealFitSection() {
             </ul>
           </div>
           <div className="rounded-3xl border border-border bg-card p-6 md:p-8">
-            <h3 className="font-display text-lg font-bold uppercase tracking-wider">Not a fit if</h3>
+            <h3 className="font-display text-lg font-bold uppercase tracking-wider">
+              Not a fit if
+            </h3>
             <ul className="mt-4 space-y-2">
               {idealFit.not.map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -461,7 +493,10 @@ export function HealthCheckSection() {
           <div className="flex flex-col items-start gap-4">
             <ButtonPrimary to={healthCheck.cta.to}>{healthCheck.cta.label}</ButtonPrimary>
             <p className="text-sm text-muted-foreground">{healthCheck.note}</p>
-            <Link to={healthCheck.securityCta.to} className="text-sm font-bold text-primary hover:underline">
+            <Link
+              to={healthCheck.securityCta.to}
+              className="text-sm font-bold text-primary hover:underline"
+            >
               {healthCheck.securityCta.label}
             </Link>
           </div>
@@ -508,7 +543,7 @@ export function PricingTeaser() {
               key={tier.title}
               className={cn(
                 "relative flex h-full flex-col rounded-3xl border bg-card p-6 md:p-8",
-                tier.recommended ? "border-primary" : "border-border"
+                tier.recommended ? "border-primary" : "border-border",
               )}
             >
               {tier.recommended && (
@@ -544,7 +579,9 @@ export function SecurityTeaser() {
             <div>
               <SectionHeader kicker={securityTeaser.kicker} title={securityTeaser.title} />
               <div className="mt-6">
-                <ButtonSecondary to={securityTeaser.cta.to}>{securityTeaser.cta.label}</ButtonSecondary>
+                <ButtonSecondary to={securityTeaser.cta.to}>
+                  {securityTeaser.cta.label}
+                </ButtonSecondary>
               </div>
             </div>
             <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -567,7 +604,12 @@ export function FaqTeaser() {
   return (
     <section className="section-padding">
       <SectionContainer>
-        <SectionHeader kicker={faqTeaser.kicker} title={faqTeaser.title} subtitle={faqTeaser.intro} align="center" />
+        <SectionHeader
+          kicker={faqTeaser.kicker}
+          title={faqTeaser.title}
+          subtitle={faqTeaser.intro}
+          align="center"
+        />
         <div className="mx-auto mt-12 max-w-3xl">
           <FaqAccordion items={faqTeaser.items} />
         </div>
@@ -592,7 +634,10 @@ export function FaqAccordion({ items }: { items: { question: string; answer: str
           >
             <span className="font-display text-base font-bold md:text-lg">{item.question}</span>
             <ChevronDown
-              className={cn("h-5 w-5 shrink-0 text-muted-foreground transition-transform", open === index && "rotate-180")}
+              className={cn(
+                "h-5 w-5 shrink-0 text-muted-foreground transition-transform",
+                open === index && "rotate-180",
+              )}
             />
           </button>
           {open === index && (
@@ -638,7 +683,7 @@ export function FullPricingSection() {
               key={tier.name}
               className={cn(
                 "relative flex h-full flex-col rounded-3xl border bg-card p-6 md:p-8",
-                tier.recommended ? "border-primary" : "border-border"
+                tier.recommended ? "border-primary" : "border-border",
               )}
             >
               {tier.recommended && (
@@ -672,7 +717,11 @@ export function FullPricingSection() {
         <p className="mt-8 text-center text-sm text-muted-foreground">{fullPricing.disclaimer}</p>
 
         <div className="mt-20">
-          <SectionHeader kicker="Pricing questions" title="Before you choose a tier" align="center" />
+          <SectionHeader
+            kicker="Pricing questions"
+            title="Before you choose a tier"
+            align="center"
+          />
           <div className="mx-auto mt-10 max-w-3xl">
             <FaqAccordion items={fullPricing.beforeYouChoose} />
           </div>
@@ -680,10 +729,16 @@ export function FullPricingSection() {
 
         <div className="mt-20 rounded-3xl border border-border bg-card p-8 text-center md:p-12">
           <h3 className="display-heading text-2xl">{fullPricing.nextStep.title}</h3>
-          <p className="mx-auto mt-3 max-w-xl text-muted-foreground">{fullPricing.nextStep.description}</p>
+          <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
+            {fullPricing.nextStep.description}
+          </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <ButtonPrimary to={fullPricing.nextStep.primary.to}>{fullPricing.nextStep.primary.label}</ButtonPrimary>
-            <ButtonSecondary to={fullPricing.nextStep.secondary.to}>{fullPricing.nextStep.secondary.label}</ButtonSecondary>
+            <ButtonPrimary to={fullPricing.nextStep.primary.to}>
+              {fullPricing.nextStep.primary.label}
+            </ButtonPrimary>
+            <ButtonSecondary to={fullPricing.nextStep.secondary.to}>
+              {fullPricing.nextStep.secondary.label}
+            </ButtonSecondary>
           </div>
         </div>
       </SectionContainer>
@@ -698,7 +753,10 @@ export function SecurityGrid() {
       <SectionContainer>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {securityPage.controls.map((control) => (
-            <div key={control} className="flex items-start gap-3 rounded-2xl border border-border bg-card p-5">
+            <div
+              key={control}
+              className="flex items-start gap-3 rounded-2xl border border-border bg-card p-5"
+            >
               <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
               <span className="text-sm font-medium">{control}</span>
             </div>
@@ -706,13 +764,14 @@ export function SecurityGrid() {
         </div>
         <div className="mt-12 rounded-2xl border border-border bg-card p-6 md:p-8">
           <h3 className="font-display text-lg font-bold">What we don't claim</h3>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{securityPage.disclaimer}</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            {securityPage.disclaimer}
+          </p>
         </div>
       </SectionContainer>
     </section>
   );
 }
-
 
 export function ContactDetails() {
   const { contactPage } = content;
@@ -721,7 +780,9 @@ export function ContactDetails() {
       <SectionContainer>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
           <div>
-            <h3 className="font-display text-lg font-bold uppercase tracking-wider">What we'll cover</h3>
+            <h3 className="font-display text-lg font-bold uppercase tracking-wider">
+              What we'll cover
+            </h3>
             <ul className="mt-6 space-y-4">
               {contactPage.whatWellCover.map((item) => (
                 <li key={item.number} className="flex items-start gap-3">
@@ -731,12 +792,19 @@ export function ContactDetails() {
               ))}
             </ul>
             <div className="mt-8">
-              <ButtonSecondary to={contactPage.orStart.to}>{contactPage.orStart.label}</ButtonSecondary>
+              <ButtonSecondary to={contactPage.orStart.to}>
+                {contactPage.orStart.label}
+              </ButtonSecondary>
             </div>
           </div>
           <div className="rounded-3xl border border-border bg-card p-6 md:p-8">
-            <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Direct contact</p>
-            <a href={content.global.email} className="mt-3 block text-lg font-bold text-primary hover:underline">
+            <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
+              Direct contact
+            </p>
+            <a
+              href={content.global.email}
+              className="mt-3 block text-lg font-bold text-primary hover:underline"
+            >
               {content.global.emailLabel}
             </a>
             <div className="mt-6 space-y-3">
@@ -767,7 +835,6 @@ export function ContactDetails() {
   );
 }
 
-
 export function ResultGrid() {
   const { outcomes } = content;
   return (
@@ -794,7 +861,9 @@ export function ClaimsNote() {
         <div className="mx-auto max-w-3xl rounded-2xl border border-border bg-card p-6 text-center md:p-8">
           <h3 className="font-display text-lg font-bold">A note on claims</h3>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            We don't publish recovery percentages, DSO improvements or case studies until we have verified client data to support them. When we do, they'll appear here with the client's permission.
+            We don't publish recovery percentages, DSO improvements or case studies until we have
+            verified client data to support them. When we do, they'll appear here with the client's
+            permission.
           </p>
         </div>
       </SectionContainer>
@@ -807,17 +876,20 @@ export function AboutValues() {
     {
       number: "01",
       title: "Lean by design",
-      description: "We operate a tight process rather than a large team, so the cost of an AR function stays proportionate to the business.",
+      description:
+        "We operate a tight process rather than a large team, so the cost of an AR function stays proportionate to the business.",
     },
     {
       number: "02",
       title: "Technology-enabled",
-      description: "AI and automation absorb the repetitive volume — preparation, sequencing, matching, monitoring and reporting.",
+      description:
+        "AI and automation absorb the repetitive volume — preparation, sequencing, matching, monitoring and reporting.",
     },
     {
       number: "03",
       title: "Human accountable",
-      description: "A specialist owns your account. Disputes, negotiation, escalation and sensitive conversations are handled by people.",
+      description:
+        "A specialist owns your account. Disputes, negotiation, escalation and sensitive conversations are handled by people.",
     },
   ];
   return (
@@ -828,7 +900,9 @@ export function AboutValues() {
             <div key={value.number} className="rounded-3xl border border-border bg-card p-6 md:p-8">
               <span className="display-heading text-3xl text-primary">{value.number}</span>
               <h3 className="mt-4 font-display text-xl font-bold">{value.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{value.description}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {value.description}
+              </p>
             </div>
           ))}
         </div>
@@ -842,9 +916,13 @@ export function WhereWeWork() {
     <section className="section-padding">
       <SectionContainer>
         <div className="rounded-3xl border border-border bg-card p-6 md:p-12">
-          <h3 className="font-display text-2xl font-bold">Built for growing B2B businesses internationally.</h3>
+          <h3 className="font-display text-2xl font-bold">
+            Built for growing B2B businesses internationally.
+          </h3>
           <p className="mt-4 max-w-3xl text-muted-foreground">
-            We support B2B companies across Australia, the United States, Canada, the United Kingdom, the UAE, South Africa and other English-speaking markets — subject to operational, regulatory and communication requirements.
+            We support B2B companies across Australia, the United States, Canada, the United
+            Kingdom, the UAE, South Africa and other English-speaking markets — subject to
+            operational, regulatory and communication requirements.
           </p>
         </div>
       </SectionContainer>

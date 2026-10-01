@@ -15,7 +15,7 @@ export function ScrollReveal() {
     const targets = new Set<Element>();
     document.querySelectorAll("main section").forEach((section) => {
       const kids = Array.from(section.children).flatMap((child) =>
-        child.classList.contains("mx-auto") ? Array.from(child.children) : [child]
+        child.classList.contains("mx-auto") ? Array.from(child.children) : [child],
       );
       const list = kids.length > 1 ? kids : [section];
       list.forEach((el, i) => {
@@ -34,7 +34,7 @@ export function ScrollReveal() {
           }
         });
       },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.08 }
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.08 },
     );
 
     targets.forEach((el) => {

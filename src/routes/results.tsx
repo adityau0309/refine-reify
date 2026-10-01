@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero, ResultGrid, StepsSection, ClaimsNote, WhatsAppButton } from "../components/recify";
+import {
+  PageHero,
+  ResultGrid,
+  StepsSection,
+  ClaimsNote,
+  WhatsAppButton,
+} from "../components/recify";
 
 export const Route = createFileRoute("/results")({
   component: ResultsPage,

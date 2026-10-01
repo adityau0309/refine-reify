@@ -171,7 +171,9 @@ export function StartForm() {
 
     switch (current) {
       case 1:
-        return data.business ? undefined : "Please choose the option that best describes your business.";
+        return data.business
+          ? undefined
+          : "Please choose the option that best describes your business.";
       case 2:
         return check(nameSchema.safeParse(data.fullName));
       case 3:
@@ -188,7 +190,9 @@ export function StartForm() {
         if (!messageSchema.safeParse(data.challenge).success) {
           return check(messageSchema.safeParse(data.challenge));
         }
-        return data.consent ? undefined : "You need to tick the consent box before we can submit your details.";
+        return data.consent
+          ? undefined
+          : "You need to tick the consent box before we can submit your details.";
       default:
         return undefined;
     }
@@ -312,7 +316,10 @@ export function StartForm() {
         )}
 
         {step === 4 && (
-          <Step title="What's the best email to reach you?" hint="We'll only use this to send your AR health check.">
+          <Step
+            title="What's the best email to reach you?"
+            hint="We'll only use this to send your AR health check."
+          >
             <input
               type="email"
               value={data.email}
@@ -325,7 +332,10 @@ export function StartForm() {
         )}
 
         {step === 5 && (
-          <Step title="A phone number, if you'd like a call" hint="Optional — include your country code.">
+          <Step
+            title="A phone number, if you'd like a call"
+            hint="Optional — include your country code."
+          >
             <input
               type="tel"
               value={data.phone}
@@ -361,7 +371,10 @@ export function StartForm() {
         )}
 
         {step === 8 && (
-          <Step title="What is your biggest AR challenge right now?" hint="The more detail, the better our recommendation.">
+          <Step
+            title="What is your biggest AR challenge right now?"
+            hint="The more detail, the better our recommendation."
+          >
             <textarea
               rows={4}
               value={data.challenge}
@@ -456,7 +469,9 @@ function RadioGrid({
           key={option}
           className={cn(
             "flex cursor-pointer items-center gap-3 rounded-xl border p-4 transition-colors",
-            value === option ? "border-primary bg-primary/5" : "border-border bg-background hover:bg-accent"
+            value === option
+              ? "border-primary bg-primary/5"
+              : "border-border bg-background hover:bg-accent",
           )}
         >
           <input
@@ -548,14 +563,19 @@ export function ContactForm() {
         </div>
         <h3 className="display-heading mt-4 text-xl">Request received</h3>
         <p className="mt-2 text-sm text-muted-foreground">
-          Our team will review your details and reply within one business day. For urgent questions, reach us on WhatsApp.
+          Our team will review your details and reply within one business day. For urgent questions,
+          reach us on WhatsApp.
         </p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="rounded-3xl border border-border bg-card p-6 md:p-8">
+    <form
+      onSubmit={handleSubmit}
+      noValidate
+      className="rounded-3xl border border-border bg-card p-6 md:p-8"
+    >
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <label className="flex flex-col gap-1.5 text-sm font-medium">
           Full name
@@ -620,7 +640,11 @@ export function ContactForm() {
         <FieldError message={errors.message} />
       </label>
 
-      <ConsentCheckbox checked={form.consent} onChange={(v) => set("consent", v)} error={errors.consent} />
+      <ConsentCheckbox
+        checked={form.consent}
+        onChange={(v) => set("consent", v)}
+        error={errors.consent}
+      />
 
       <div className="mt-3">
         <FieldError message={errors.form} />

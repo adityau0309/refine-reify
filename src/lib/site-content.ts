@@ -5,7 +5,8 @@ export const hero = {
   title: "From outstanding invoices to",
   highlight: "outstanding outcomes.",
   tagline: "Your AR team, without another hire.",
-  description: "We run your invoice-to-cash work — AI for the volume, people for the judgment. Get Accounts Receivable (AR) moving without the headcount.",
+  description:
+    "We run your invoice-to-cash work — AI for the volume, people for the judgment. Get Accounts Receivable (AR) moving without the headcount.",
   primaryCta: { label: "Get your free AR health check", to: "/start" },
   secondaryCta: { label: "See how it works", to: "/system" },
   trustLine: "Managed service • AI-enabled • Human-led • Built for growing B2B businesses",
@@ -23,7 +24,8 @@ export const trustPill = {
 export const problem = {
   kicker: "The problem",
   title: "Revenue isn't real until it becomes cash.",
-  intro: "Growing businesses rarely need another finance system. They need someone to consistently own the work that happens after the invoice is sent.",
+  intro:
+    "Growing businesses rarely need another finance system. They need someone to consistently own the work that happens after the invoice is sent.",
   issues: [
     {
       title: "Follow-ups fall through",
@@ -31,15 +33,18 @@ export const problem = {
     },
     {
       title: "Disputes stay stuck",
-      description: "Missing documentation, approvals, pricing questions and delivery issues can keep valid invoices unpaid for weeks.",
+      description:
+        "Missing documentation, approvals, pricing questions and delivery issues can keep valid invoices unpaid for weeks.",
     },
     {
       title: "No one sees the risk",
-      description: "An aging report tells you what is overdue. It doesn't always tell you what is about to become overdue.",
+      description:
+        "An aging report tells you what is overdue. It doesn't always tell you what is about to become overdue.",
     },
     {
       title: "Founders become the collections team",
-      description: "Important customer relationships end up depending on someone personally remembering who needs to be chased.",
+      description:
+        "Important customer relationships end up depending on someone personally remembering who needs to be chased.",
     },
   ],
   cta: { label: "Let Recify take it from here", to: "/services" },
@@ -48,7 +53,8 @@ export const problem = {
 export const services = {
   kicker: "What Recify actually does",
   title: "Three functions. One managed outcome.",
-  subtitle: "These are not software modules. They are operated services — the work we take off your team and run to a result.",
+  subtitle:
+    "These are not software modules. They are operated services — the work we take off your team and run to a result.",
   items: [
     {
       number: "01",
@@ -73,7 +79,8 @@ export const services = {
         "Demand letter and small-claims filing prep (documents only, no legal representation)",
         "At-risk customer pattern flagging",
       ],
-      outcome: "Includes everything in Collect, plus the work needed to unstick invoices that automation alone can't fix.",
+      outcome:
+        "Includes everything in Collect, plus the work needed to unstick invoices that automation alone can't fix.",
     },
     {
       number: "03",
@@ -86,7 +93,8 @@ export const services = {
         "Cash-risk prediction — flag bad payers before you extend them credit",
         "What-if cash simulation — see the cash impact of a decision before you make it",
       ],
-      outcome: "Includes everything in Collect and Recover, plus full visibility and control over what's coming in and going out.",
+      outcome:
+        "Includes everything in Collect and Recover, plus full visibility and control over what's coming in and going out.",
     },
   ],
   cta: { label: "Explore the services", to: "/services" },
@@ -143,34 +151,75 @@ export const steps = {
   title: "Four steps to an owned process.",
   note: "Typical onboarding: approximately 3–5 business days, subject to data and access readiness.",
   items: [
-    { number: "01", title: "Connect", description: "Connect your accounting system and securely provide the receivables information we need." },
-    { number: "02", title: "Analyze", description: "We review your AR, identify overdue balances, disputes, exceptions and collection priorities." },
-    { number: "03", title: "Operate", description: "Recify starts the follow-up, reconciliation, dispute and escalation process." },
-    { number: "04", title: "Report & improve", description: "You receive clear reporting on recovered cash, outstanding risk, DSO and what needs attention." },
+    {
+      number: "01",
+      title: "Connect",
+      description:
+        "Connect your accounting system and securely provide the receivables information we need.",
+    },
+    {
+      number: "02",
+      title: "Analyze",
+      description:
+        "We review your AR, identify overdue balances, disputes, exceptions and collection priorities.",
+    },
+    {
+      number: "03",
+      title: "Operate",
+      description: "Recify starts the follow-up, reconciliation, dispute and escalation process.",
+    },
+    {
+      number: "04",
+      title: "Report & improve",
+      description:
+        "You receive clear reporting on recovered cash, outstanding risk, DSO and what needs attention.",
+    },
   ],
 };
 
 export const industries = {
   kicker: "Industries",
   title: "Built for businesses where invoices don't pay themselves.",
-  subtitle: "Different industries stall payment for different reasons. We work the specific blockers that keep your revenue outstanding.",
+  subtitle:
+    "Different industries stall payment for different reasons. We work the specific blockers that keep your revenue outstanding.",
   items: [
     {
       title: "Construction & Trade Contracting",
       description: "Keep payment issues moving before they become cash-flow problems.",
-      bullets: ["Progress claims", "Variations", "Retentions", "Approval delays", "Documentation disputes", "GC / subcontractor payment delays"],
+      bullets: [
+        "Progress claims",
+        "Variations",
+        "Retentions",
+        "Approval delays",
+        "Documentation disputes",
+        "GC / subcontractor payment delays",
+      ],
       href: "/industries/construction",
     },
     {
       title: "Freight, Logistics & Trucking",
-      description: "Resolve the paperwork and payment blockers keeping freight revenue outstanding.",
-      bullets: ["Detention / accessorial disputes", "Rate disagreements", "POD / documentation issues", "Brokers and shippers paying late", "Invoice discrepancies"],
+      description:
+        "Resolve the paperwork and payment blockers keeping freight revenue outstanding.",
+      bullets: [
+        "Detention / accessorial disputes",
+        "Rate disagreements",
+        "POD / documentation issues",
+        "Brokers and shippers paying late",
+        "Invoice discrepancies",
+      ],
       href: "/industries/freight-logistics",
     },
     {
       title: "Wholesale & Distribution",
       description: "Keep recurring B2B receivables moving without adding another finance hire.",
-      bullets: ["Pricing discrepancies", "PO mismatches", "Delivery disputes", "Short payments", "Credit-term customers", "Large customer balances"],
+      bullets: [
+        "Pricing discrepancies",
+        "PO mismatches",
+        "Delivery disputes",
+        "Short payments",
+        "Credit-term customers",
+        "Large customer balances",
+      ],
       href: "/industries/wholesale-distribution",
     },
   ],
@@ -203,7 +252,8 @@ export const idealFit = {
 export const healthCheck = {
   kicker: "Free AR health check",
   title: "Find out where your cash is getting stuck — free.",
-  description: "Share your AR aging report. We'll return a concise analysis showing where receivables are concentrated, what appears at risk and where follow-up may be getting lost.",
+  description:
+    "Share your AR aging report. We'll return a concise analysis showing where receivables are concentrated, what appears at risk and where follow-up may be getting lost.",
   cta: { label: "Get my free AR health check", to: "/start" },
   note: "Your data is handled confidentially and only used for the agreed assessment.",
   securityCta: { label: "How we handle data", to: "/security" },
@@ -213,21 +263,57 @@ export const outcomes = {
   kicker: "What to expect",
   title: "The outcomes we work toward.",
   items: [
-    { number: "01", title: "More cash collected", description: "Outstanding invoices actively move toward resolution." },
-    { number: "02", title: "Less internal work", description: "Your team spends less time chasing payment status." },
-    { number: "03", title: "Faster dispute resolution", description: "Payment blockers become tracked actions instead of forgotten email threads." },
-    { number: "04", title: "Better visibility", description: "Know what is overdue, what is at risk and what is expected." },
+    {
+      number: "01",
+      title: "More cash collected",
+      description: "Outstanding invoices actively move toward resolution.",
+    },
+    {
+      number: "02",
+      title: "Less internal work",
+      description: "Your team spends less time chasing payment status.",
+    },
+    {
+      number: "03",
+      title: "Faster dispute resolution",
+      description: "Payment blockers become tracked actions instead of forgotten email threads.",
+    },
+    {
+      number: "04",
+      title: "Better visibility",
+      description: "Know what is overdue, what is at risk and what is expected.",
+    },
   ],
 };
 
 export const pricingTeaser = {
   kicker: "Pricing",
   title: "One team. One monthly fee. No software seat licenses.",
-  subtitle: "Simple monthly pricing based primarily on the volume and complexity of receivables we manage.",
+  subtitle:
+    "Simple monthly pricing based primarily on the volume and complexity of receivables we manage.",
   tiers: [
-    { tier: "Tier 1", title: "Execution", price: "$750", period: "per month", tagline: "We chase. We track. You get paid." },
-    { tier: "Tier 2", title: "Resolution", price: "$1,200", period: "per month", tagline: "We solve delays. We recover cash.", recommended: true },
-    { tier: "Tier 3", title: "Optimization", price: "$2,000 – $4,000+", period: "per month", tagline: "We scale systems. We improve cash flow." },
+    {
+      tier: "Tier 1",
+      title: "Execution",
+      price: "$750",
+      period: "per month",
+      tagline: "We chase. We track. You get paid.",
+    },
+    {
+      tier: "Tier 2",
+      title: "Resolution",
+      price: "$1,200",
+      period: "per month",
+      tagline: "We solve delays. We recover cash.",
+      recommended: true,
+    },
+    {
+      tier: "Tier 3",
+      title: "Optimization",
+      price: "$2,000 – $4,000+",
+      period: "per month",
+      tagline: "We scale systems. We improve cash flow.",
+    },
   ],
   cta: { label: "See full pricing", to: "/pricing" },
 };
@@ -253,23 +339,28 @@ export const faqTeaser = {
   items: [
     {
       question: "What exactly does Recify do?",
-      answer: "Recify manages the work between invoice and cash — payment follow-ups, reconciliation, dispute identification and documentation, escalation, customer communication and reporting [...]",
+      answer:
+        "Recify manages the work between invoice and cash — payment follow-ups, reconciliation, dispute identification and documentation, escalation, customer communication and reporting [...]",
     },
     {
       question: "Is Recify software?",
-      answer: "No. Recify is an Outcome-as-a-Service company. We use software and AI internally, but you are hiring us to operate your receivables — not buying another system to manage.",
+      answer:
+        "No. Recify is an Outcome-as-a-Service company. We use software and AI internally, but you are hiring us to operate your receivables — not buying another system to manage.",
     },
     {
       question: "Do I need to hire an AR employee?",
-      answer: "No. Recify is designed to provide the operational capacity of a managed AR function without requiring you to build the function internally.",
+      answer:
+        "No. Recify is designed to provide the operational capacity of a managed AR function without requiring you to build the function internally.",
     },
     {
       question: "Will AI communicate with my customers?",
-      answer: "AI can assist with preparation and workflow, while appropriate customer communication is reviewed and managed according to your agreed process. Sensitive judgment calls and escalat[...]",
+      answer:
+        "AI can assist with preparation and workflow, while appropriate customer communication is reviewed and managed according to your agreed process. Sensitive judgment calls and escalat[...]",
     },
     {
       question: "Can Recify handle disputes?",
-      answer: "Yes, within the agreed scope. We organise documentation, identify blockers, coordinate communication and track disputes toward resolution. Recify does not provide legal advice.",
+      answer:
+        "Yes, within the agreed scope. We organise documentation, identify blockers, coordinate communication and track disputes toward resolution. Recify does not provide legal advice.",
     },
     {
       question: "Do you make phone calls?",
@@ -288,17 +379,73 @@ export const global = {
   phoneHref: "https://wa.me/919428513418",
 };
 
-export const pageHeroes: Record<string, { kicker: string; title: string; highlight?: string; subtitle: string }> = {
-  system: { kicker: "The system", title: "You don't operate Recify.", highlight: "Recify operates your receivables.", subtitle: "A managed function that takes over the work between invoice and ca[...]" },
-  services: { kicker: "What Recify actually does", title: "Three functions.", highlight: "One managed outcome.", subtitle: "These are not software modules. They are operated services — the work[...]" },
-  industries: { kicker: "Industries", title: "Built for businesses where invoices", highlight: "don't pay themselves.", subtitle: "Different industries stall payment for different reasons. We wor[...]" },
-  pricing: { kicker: "Pricing", title: "One team. One monthly fee.", highlight: "No seat licenses.", subtitle: "Simple monthly pricing based primarily on the volume and complexity of receivables [...]" },
-  results: { kicker: "Results", title: "What an owned AR process", highlight: "actually changes.", subtitle: "Recify is early-stage and we don't publish numbers we can't verify. Here is what the [...]" },
-  about: { kicker: "About Recify", title: "AR shouldn't require", highlight: "another full-time hire.", subtitle: "Recify was built around a simple observation: many growing B2B companies have en[...]" },
-  faq: { kicker: "FAQ", title: "Straight", highlight: "answers.", subtitle: "What Recify does, what it doesn't do, and how the service actually operates." },
-  contact: { kicker: "Prefer to talk?", title: "Book a short conversation", highlight: "about your receivables.", subtitle: "This is a receivables review, not a sales demo. Twenty minutes to unde[...]" },
-  start: { kicker: "Free AR health check", title: "Let's see if Recify", highlight: "is a fit.", subtitle: "Answer a few questions. We'll recommend the right next step." },
-  security: { kicker: "Security & trust", title: "Your receivables are sensitive.", highlight: "We treat them that way.", subtitle: "Recify works inside your financial data. These are the control[...]" },
+export const pageHeroes: Record<
+  string,
+  { kicker: string; title: string; highlight?: string; subtitle: string }
+> = {
+  system: {
+    kicker: "The system",
+    title: "You don't operate Recify.",
+    highlight: "Recify operates your receivables.",
+    subtitle: "A managed function that takes over the work between invoice and ca[...]",
+  },
+  services: {
+    kicker: "What Recify actually does",
+    title: "Three functions.",
+    highlight: "One managed outcome.",
+    subtitle: "These are not software modules. They are operated services — the work[...]",
+  },
+  industries: {
+    kicker: "Industries",
+    title: "Built for businesses where invoices",
+    highlight: "don't pay themselves.",
+    subtitle: "Different industries stall payment for different reasons. We wor[...]",
+  },
+  pricing: {
+    kicker: "Pricing",
+    title: "One team. One monthly fee.",
+    highlight: "No seat licenses.",
+    subtitle:
+      "Simple monthly pricing based primarily on the volume and complexity of receivables [...]",
+  },
+  results: {
+    kicker: "Results",
+    title: "What an owned AR process",
+    highlight: "actually changes.",
+    subtitle:
+      "Recify is early-stage and we don't publish numbers we can't verify. Here is what the [...]",
+  },
+  about: {
+    kicker: "About Recify",
+    title: "AR shouldn't require",
+    highlight: "another full-time hire.",
+    subtitle:
+      "Recify was built around a simple observation: many growing B2B companies have en[...]",
+  },
+  faq: {
+    kicker: "FAQ",
+    title: "Straight",
+    highlight: "answers.",
+    subtitle: "What Recify does, what it doesn't do, and how the service actually operates.",
+  },
+  contact: {
+    kicker: "Prefer to talk?",
+    title: "Book a short conversation",
+    highlight: "about your receivables.",
+    subtitle: "This is a receivables review, not a sales demo. Twenty minutes to unde[...]",
+  },
+  start: {
+    kicker: "Free AR health check",
+    title: "Let's see if Recify",
+    highlight: "is a fit.",
+    subtitle: "Answer a few questions. We'll recommend the right next step.",
+  },
+  security: {
+    kicker: "Security & trust",
+    title: "Your receivables are sensitive.",
+    highlight: "We treat them that way.",
+    subtitle: "Recify works inside your financial data. These are the control[...]",
+  },
 };
 
 export const fullPricing = {
@@ -360,23 +507,28 @@ export const fullPricing = {
       cta: { label: "Talk to Recify", to: "/contact" },
     },
   ],
-  disclaimer: "Pricing shown is indicative for standard scopes. Final pricing may vary based on invoice volume, dispute complexity, communication requirements, integrations and operational scope.[...]",
+  disclaimer:
+    "Pricing shown is indicative for standard scopes. Final pricing may vary based on invoice volume, dispute complexity, communication requirements, integrations and operational scope.[...]",
   beforeYouChoose: [
     {
       question: "What exactly does Recify do?",
-      answer: "Recify manages the work between invoice and cash — payment follow-ups, reconciliation, dispute identification and documentation, escalation, customer communication and reporting [...]",
+      answer:
+        "Recify manages the work between invoice and cash — payment follow-ups, reconciliation, dispute identification and documentation, escalation, customer communication and reporting [...]",
     },
     {
       question: "Is Recify software?",
-      answer: "No. Recify is an Outcome-as-a-Service company. We use software and AI internally, but you are hiring us to operate your receivables — not buying another system to manage.",
+      answer:
+        "No. Recify is an Outcome-as-a-Service company. We use software and AI internally, but you are hiring us to operate your receivables — not buying another system to manage.",
     },
     {
       question: "Do I need to hire an AR employee?",
-      answer: "No. Recify is designed to provide the operational capacity of a managed AR function without requiring you to build the function internally.",
+      answer:
+        "No. Recify is designed to provide the operational capacity of a managed AR function without requiring you to build the function internally.",
     },
     {
       question: "Will AI communicate with my customers?",
-      answer: "AI can assist with preparation and workflow, while appropriate customer communication is reviewed and managed according to your agreed process. Sensitive judgment calls and escalat[...]",
+      answer:
+        "AI can assist with preparation and workflow, while appropriate customer communication is reviewed and managed according to your agreed process. Sensitive judgment calls and escalat[...]",
     },
   ],
   nextStep: {
@@ -390,23 +542,28 @@ export const fullPricing = {
 export const fullFaq = [
   {
     question: "What exactly does Recify do?",
-    answer: "Recify manages the work between invoice and cash — payment follow-ups, reconciliation, dispute identification and documentation, escalation, customer communication and reporting [...]",
+    answer:
+      "Recify manages the work between invoice and cash — payment follow-ups, reconciliation, dispute identification and documentation, escalation, customer communication and reporting [...]",
   },
   {
     question: "Is Recify software?",
-    answer: "No. Recify is an Outcome-as-a-Service company. We use software and AI internally, but you are hiring us to operate your receivables — not buying another system to manage.",
+    answer:
+      "No. Recify is an Outcome-as-a-Service company. We use software and AI internally, but you are hiring us to operate your receivables — not buying another system to manage.",
   },
   {
     question: "Do I need to hire an AR employee?",
-    answer: "No. Recify is designed to provide the operational capacity of a managed AR function without requiring you to build the function internally.",
+    answer:
+      "No. Recify is designed to provide the operational capacity of a managed AR function without requiring you to build the function internally.",
   },
   {
     question: "Will AI communicate with my customers?",
-    answer: "AI can assist with preparation and workflow, while appropriate customer communication is reviewed and managed according to your agreed process. Sensitive judgment calls and escalatio[...]",
+    answer:
+      "AI can assist with preparation and workflow, while appropriate customer communication is reviewed and managed according to your agreed process. Sensitive judgment calls and escalatio[...]",
   },
   {
     question: "Can Recify handle disputes?",
-    answer: "Yes, within the agreed scope. We organise documentation, identify blockers, coordinate communication and track disputes toward resolution. Recify does not provide legal advice.",
+    answer:
+      "Yes, within the agreed scope. We organise documentation, identify blockers, coordinate communication and track disputes toward resolution. Recify does not provide legal advice.",
   },
   {
     question: "Do you make phone calls?",
@@ -414,19 +571,23 @@ export const fullFaq = [
   },
   {
     question: "Which accounting systems do you support?",
-    answer: "Support can include systems such as Xero, QuickBooks and MYOB, with broader integrations depending on scope.",
+    answer:
+      "Support can include systems such as Xero, QuickBooks and MYOB, with broader integrations depending on scope.",
   },
   {
     question: "Do you work internationally?",
-    answer: "Yes. Recify is designed to support B2B businesses across international markets, subject to operational, regulatory and communication requirements.",
+    answer:
+      "Yes. Recify is designed to support B2B businesses across international markets, subject to operational, regulatory and communication requirements.",
   },
   {
     question: "Do I need to sign a long-term contract?",
-    answer: "No long-term commitment is intended for standard plans. Exact contractual terms are confirmed in the service agreement.",
+    answer:
+      "No long-term commitment is intended for standard plans. Exact contractual terms are confirmed in the service agreement.",
   },
   {
     question: "How quickly can we get started?",
-    answer: "Typical onboarding can take approximately 3–5 business days when required information and access are available.",
+    answer:
+      "Typical onboarding can take approximately 3–5 business days when required information and access are available.",
   },
 ];
 

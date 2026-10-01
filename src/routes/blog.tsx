@@ -1,5 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { SectionContainer, SectionHeader, ButtonPrimary, WhatsAppButton } from "../components/recify";
+import {
+  SectionContainer,
+  SectionHeader,
+  ButtonPrimary,
+  WhatsAppButton,
+} from "../components/recify";
 import { blogPosts } from "../lib/blog-posts";
 
 export const Route = createFileRoute("/blog")({
@@ -7,9 +12,16 @@ export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
       { title: "Blog — Recify" },
-      { name: "description", content: "Notes on accounts receivable operations, dispute resolution and cash flow from the Recify team." },
+      {
+        name: "description",
+        content:
+          "Notes on accounts receivable operations, dispute resolution and cash flow from the Recify team.",
+      },
       { property: "og:title", content: "Blog — Recify" },
-      { property: "og:description", content: "Notes on accounts receivable operations, dispute resolution and cash flow." },
+      {
+        property: "og:description",
+        content: "Notes on accounts receivable operations, dispute resolution and cash flow.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -28,7 +40,7 @@ function BlogPage() {
             subtitle="Writing on accounts receivable operations, payment blockers and cash flow. First articles coming soon."
             align="center"
           />
-          
+
           {blogPosts.length > 0 ? (
             <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {blogPosts.map((post) => (
@@ -41,9 +53,7 @@ function BlogPage() {
                   <h3 className="font-display text-xl font-bold mt-4 group-hover:text-primary transition-colors">
                     {post.title}
                   </h3>
-                  <p className="mt-3 text-sm text-muted-foreground line-clamp-3">
-                    {post.excerpt}
-                  </p>
+                  <p className="mt-3 text-sm text-muted-foreground line-clamp-3">{post.excerpt}</p>
                   <div className="mt-6 flex items-center justify-between">
                     <time className="text-xs text-muted-foreground">
                       {new Date(post.date).toLocaleDateString("en-US", {
@@ -52,7 +62,9 @@ function BlogPage() {
                         day: "numeric",
                       })}
                     </time>
-                    <span className="text-primary group-hover:translate-x-1 transition-transform">→</span>
+                    <span className="text-primary group-hover:translate-x-1 transition-transform">
+                      →
+                    </span>
                   </div>
                 </Link>
               ))}

@@ -9,8 +9,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl rounded-3xl bg-foreground p-8 text-center text-background md:p-16">
         <p className="kicker mb-4 text-background/70">Ready to turn receivables into cash?</p>
         <h2 className="display-heading mx-auto max-w-3xl text-3xl md:text-5xl">
-          From outstanding invoices to{" "}
-          <span className="text-primary">outstanding outcomes.</span>
+          From outstanding invoices to <span className="text-primary">outstanding outcomes.</span>
         </h2>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <Link
@@ -33,6 +32,12 @@ export function Footer() {
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
           <Link to="/how-it-works" className="hover:text-foreground">
             How it works
+          </Link>
+          <Link to="/tools/invoice-rejection-decoder" className="hover:text-foreground">
+            Rejection Decoder
+          </Link>
+          <Link to="/invoice-rejected" className="hover:text-foreground">
+            Rejection Guides
           </Link>
           <Link to="/industries" className="hover:text-foreground">
             Industries

@@ -8,7 +8,10 @@ export const Route = createFileRoute("/pricing")({
       { title: "Pricing — Recify" },
       { name: "description", content: "One team. One monthly fee. No software seat licenses." },
       { property: "og:title", content: "Pricing — Recify" },
-      { property: "og:description", content: "One team. One monthly fee. No software seat licenses." },
+      {
+        property: "og:description",
+        content: "One team. One monthly fee. No software seat licenses.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
