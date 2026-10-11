@@ -24,7 +24,11 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as StartRouteImport } from './routes/start'
 import { Route as SystemRouteImport } from './routes/system'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
+import { Route as InvoiceRejectedIndexRouteImport } from './routes/invoice-rejected/index'
+import { Route as InvoiceRejectedSlugRouteImport } from './routes/invoice-rejected/$slug'
+import { Route as ToolsInvoiceRejectionDecoderRouteImport } from './routes/tools/invoice-rejection-decoder'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -101,11 +105,32 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogRoute,
+} as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => BlogRoute,
 } as any)
+const InvoiceRejectedIndexRoute = InvoiceRejectedIndexRouteImport.update({
+  id: '/invoice-rejected/',
+  path: '/invoice-rejected/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvoiceRejectedSlugRoute = InvoiceRejectedSlugRouteImport.update({
+  id: '/invoice-rejected/$slug',
+  path: '/invoice-rejected/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsInvoiceRejectionDecoderRoute =
+  ToolsInvoiceRejectionDecoderRouteImport.update({
+    id: '/tools/invoice-rejection-decoder',
+    path: '/tools/invoice-rejection-decoder',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -124,11 +149,14 @@ export interface FileRoutesByFullPath {
   '/system': typeof SystemRoute
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/invoice-rejected/$slug': typeof InvoiceRejectedSlugRoute
+  '/tools/invoice-rejection-decoder': typeof ToolsInvoiceRejectionDecoderRoute
+  '/blog/': typeof BlogIndexRoute
+  '/invoice-rejected/': typeof InvoiceRejectedIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/how-it-works': typeof HowItWorksRoute
@@ -142,6 +170,10 @@ export interface FileRoutesByTo {
   '/system': typeof SystemRoute
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/invoice-rejected/$slug': typeof InvoiceRejectedSlugRoute
+  '/tools/invoice-rejection-decoder': typeof ToolsInvoiceRejectionDecoderRoute
+  '/blog': typeof BlogIndexRoute
+  '/invoice-rejected': typeof InvoiceRejectedIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -161,6 +193,10 @@ export interface FileRoutesById {
   '/system': typeof SystemRoute
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/invoice-rejected/$slug': typeof InvoiceRejectedSlugRoute
+  '/tools/invoice-rejection-decoder': typeof ToolsInvoiceRejectionDecoderRoute
+  '/blog/': typeof BlogIndexRoute
+  '/invoice-rejected/': typeof InvoiceRejectedIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -181,11 +217,14 @@ export interface FileRouteTypes {
     | '/system'
     | '/terms'
     | '/blog/$slug'
+    | '/invoice-rejected/$slug'
+    | '/tools/invoice-rejection-decoder'
+    | '/blog/'
+    | '/invoice-rejected/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/blog'
     | '/contact'
     | '/faq'
     | '/how-it-works'
@@ -199,6 +238,10 @@ export interface FileRouteTypes {
     | '/system'
     | '/terms'
     | '/blog/$slug'
+    | '/invoice-rejected/$slug'
+    | '/tools/invoice-rejection-decoder'
+    | '/blog'
+    | '/invoice-rejected'
   id:
     | '__root__'
     | '/'
@@ -217,6 +260,10 @@ export interface FileRouteTypes {
     | '/system'
     | '/terms'
     | '/blog/$slug'
+    | '/invoice-rejected/$slug'
+    | '/tools/invoice-rejection-decoder'
+    | '/blog/'
+    | '/invoice-rejected/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -235,6 +282,9 @@ export interface RootRouteChildren {
   StartRoute: typeof StartRoute
   SystemRoute: typeof SystemRoute
   TermsRoute: typeof TermsRoute
+  InvoiceRejectedSlugRoute: typeof InvoiceRejectedSlugRoute
+  ToolsInvoiceRejectionDecoderRoute: typeof ToolsInvoiceRejectionDecoderRoute
+  InvoiceRejectedIndexRoute: typeof InvoiceRejectedIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -344,6 +394,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof BlogRoute
+    }
     '/blog/$slug': {
       id: '/blog/$slug'
       path: '/$slug'
@@ -351,15 +408,38 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof BlogRoute
     }
+    '/invoice-rejected/': {
+      id: '/invoice-rejected/'
+      path: '/invoice-rejected'
+      fullPath: '/invoice-rejected/'
+      preLoaderRoute: typeof InvoiceRejectedIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/invoice-rejected/$slug': {
+      id: '/invoice-rejected/$slug'
+      path: '/invoice-rejected/$slug'
+      fullPath: '/invoice-rejected/$slug'
+      preLoaderRoute: typeof InvoiceRejectedSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/invoice-rejection-decoder': {
+      id: '/tools/invoice-rejection-decoder'
+      path: '/tools/invoice-rejection-decoder'
+      fullPath: '/tools/invoice-rejection-decoder'
+      preLoaderRoute: typeof ToolsInvoiceRejectionDecoderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 interface BlogRouteChildren {
   BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 const BlogRouteChildren: BlogRouteChildren = {
   BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 
 const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
@@ -380,6 +460,9 @@ const rootRouteChildren: RootRouteChildren = {
   StartRoute: StartRoute,
   SystemRoute: SystemRoute,
   TermsRoute: TermsRoute,
+  InvoiceRejectedSlugRoute: InvoiceRejectedSlugRoute,
+  ToolsInvoiceRejectionDecoderRoute: ToolsInvoiceRejectionDecoderRoute,
+  InvoiceRejectedIndexRoute: InvoiceRejectedIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
