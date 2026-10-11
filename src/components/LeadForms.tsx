@@ -1,10 +1,81 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Check, Mail } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Mail, RotateCcw } from "lucide-react";
 import { z } from "zod";
-import { supabase } from "@/integrations/supabase/client";
 import { cn } from "../lib/utils";
 import * as content from "../lib/site-content";
+
+/**
+ * GOOGLE APPS SCRIPT WEB APP URL
+ */
+export const WEB_APP_URL =
+  "https://script.google.com/macros/s/AKfycbwRKT2otw6Lv2nEctE2il3OIRtau_AqzVzmh4H5-oPRHllrNr74pWYDb4Dwm0UnlaY3Wg/exec";
+
+/**
+ * Submits payload to Google Apps Script as text/plain to avoid CORS preflight OPTIONS requests.
+ */
+async function submitLeadPayload(
+  payload: Record<string, unknown>,
+): Promise<{ ok: boolean; message?: string }> {
+  const targetUrl =
+    (typeof import.meta !== "undefined" && import.meta.env?.VITE_LEADS_WEBHOOK_URL) || WEB_APP_URL;
+
+  const isConfigured =
+    targetUrl &&
+    !targetUrl.includes("YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE") &&
+    targetUrl.startsWith("http");
+
+  if (!isConfigured) {
+    console.warn(
+      "[Recify Leads] WEB_APP_URL has not been set yet. Saving lead locally to localStorage as backup:",
+      payload,
+    );
+    try {
+      if (typeof window !== "undefined") {
+        const existing = JSON.parse(localStorage.getItem("recify_leads_backup") || "[]");
+        existing.push({ ...payload, savedAt: new Date().toISOString() });
+        localStorage.setItem("recify_leads_backup", JSON.stringify(existing));
+      }
+    } catch (e) {
+      console.warn("Could not save to localStorage", e);
+    }
+    // Return ok: true so live visitors on the site get a smooth success experience
+    return { ok: true };
+  }
+
+  try {
+    const response = await fetch(targetUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      return {
+        ok: false,
+        message: `Submission failed (HTTP ${response.status}). Please check your connection and try again.`,
+      };
+    }
+
+    const result = (await response.json()) as { status?: string; message?: string };
+    if (result.status !== "ok") {
+      return {
+        ok: false,
+        message: result.message || "We could not process your submission. Please try again.",
+      };
+    }
+
+    return { ok: true };
+  } catch (networkError) {
+    console.error("[Recify Leads] Error submitting form:", networkError);
+    return {
+      ok: false,
+      message: "Connection failed. Please check your internet connection and try again.",
+    };
+  }
+}
 
 /* -------------------------------------------------------------------------- */
 /*  Shared primitives                                                         */
@@ -92,8 +163,11 @@ const emailSchema = z
 const phoneOptionalSchema = z
   .string()
   .trim()
-  .max(20, "Phone number must be under 20 characters.")
-  .regex(/^\+?[0-9\s()-]{7,20}$/, "Enter a valid phone number, e.g. +61 400 000 000.")
+  .max(25, "Phone number must be under 25 characters.")
+  .regex(
+    /^$|^\+?[0-9\s().-]{7,25}$/,
+    "Enter a valid phone number, e.g. +61 400 000 000 or +1 (555) 123-4567.",
+  )
   .optional()
   .or(z.literal(""));
 
@@ -125,6 +199,18 @@ type StartData = {
   consent: boolean;
 };
 
+const initialStartData: StartData = {
+  business: "",
+  fullName: "",
+  company: "",
+  email: "",
+  phone: "",
+  invoices: "",
+  overdue: "",
+  challenge: "",
+  consent: false,
+};
+
 const businessOptions = [
   "Construction & Trade",
   "Freight / Logistics",
@@ -145,17 +231,8 @@ const TOTAL_STEPS = 8;
 
 export function StartForm() {
   const [step, setStep] = useState(1);
-  const [data, setData] = useState<StartData>({
-    business: "",
-    fullName: "",
-    company: "",
-    email: "",
-    phone: "",
-    invoices: "",
-    overdue: "",
-    challenge: "",
-    consent: false,
-  });
+  const [data, setData] = useState<StartData>(initialStartData);
+  const [honeypot, setHoneypot] = useState("");
   const [error, setError] = useState<string | undefined>(undefined);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -212,13 +289,14 @@ export function StartForm() {
     setStep((s) => Math.max(s - 1, 1));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     if (step < TOTAL_STEPS) {
       next();
       return;
     }
-    // Re-validate every step so nothing is skipped.
+
+    // Re-validate every step before submitting
     for (let i = 1; i <= TOTAL_STEPS; i += 1) {
       const message = validateStep(i);
       if (message) {
@@ -229,26 +307,39 @@ export function StartForm() {
     }
 
     setSubmitting(true);
-    const { error: insertError } = await supabase.from("leads").insert({
-      full_name: data.fullName.trim(),
-      email: data.email.trim(),
-      company_name: data.company.trim(),
-      phone: data.phone.trim() || null,
+    setError(undefined);
+
+    const payload = {
+      formName: "AR Health Check / Onboarding",
       form_type: "onboarding",
-      consent_given: true,
-      details: {
-        business_type: data.business,
-        monthly_invoices: Number(data.invoices),
-        overdue_profile: data.overdue,
-        biggest_challenge: data.challenge.trim(),
-      },
-    });
+      pageUrl: typeof window !== "undefined" ? window.location.href : "",
+      userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "",
+      submittedAt: new Date().toISOString(),
+      fullName: data.fullName.trim(),
+      email: data.email.trim(),
+      companyName: data.company.trim(),
+      phone: data.phone.trim() || null,
+      businessType: data.business,
+      monthlyInvoices: Number(data.invoices),
+      overdueProfile: data.overdue,
+      biggestChallenge: data.challenge.trim(),
+      consentGiven: data.consent,
+      _hp: honeypot, // hidden spam honeypot
+    };
+
+    const res = await submitLeadPayload(payload);
     setSubmitting(false);
 
-    if (insertError) {
-      setError("We couldn't submit your details just now. Please try again in a moment.");
+    if (!res.ok) {
+      setError(
+        res.message || "We couldn't submit your details just now. Please try again in a moment.",
+      );
       return;
     }
+
+    // Reset form and show success card
+    setData(initialStartData);
+    setHoneypot("");
     setSubmitted(true);
   };
 
@@ -267,6 +358,20 @@ export function StartForm() {
       noValidate
       className="mx-auto max-w-2xl rounded-3xl border border-border bg-card p-6 md:p-10"
     >
+      {/* Hidden Spam Honeypot Field */}
+      <div className="hidden" aria-hidden="true" style={{ display: "none" }}>
+        <label htmlFor="start-hp">Leave this empty</label>
+        <input
+          id="start-hp"
+          type="text"
+          name="_hp"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <div className="flex items-center justify-between gap-4">
         <p className="kicker">
           {step} / {TOTAL_STEPS}
@@ -387,15 +492,27 @@ export function StartForm() {
         )}
       </div>
 
-      <div className="mt-3">
-        <FieldError message={error} />
-      </div>
+      {error && (
+        <div className="mt-4 flex flex-col gap-2 rounded-xl border border-destructive/30 bg-destructive/5 p-4">
+          <FieldError message={error} />
+          {step === TOTAL_STEPS && (
+            <button
+              type="button"
+              onClick={() => handleSubmit()}
+              disabled={submitting}
+              className="inline-flex items-center gap-1.5 self-start text-xs font-semibold text-destructive underline hover:text-destructive/80"
+            >
+              <RotateCcw className="h-3 w-3" /> Retry submission
+            </button>
+          )}
+        </div>
+      )}
 
       <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <button
           type="button"
           onClick={back}
-          disabled={step === 1}
+          disabled={step === 1 || submitting}
           className="inline-flex items-center justify-center gap-2 rounded-full border border-input bg-background px-5 py-3 text-xs font-bold uppercase tracking-wider transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-40"
         >
           <ArrowLeft className="h-4 w-4" />
@@ -496,15 +613,18 @@ function RadioGrid({
 type ContactErrorKey = "name" | "company" | "email" | "phone" | "message" | "consent" | "form";
 type ContactErrors = { [K in ContactErrorKey]?: string | undefined };
 
+const initialContactForm = {
+  name: "",
+  company: "",
+  email: "",
+  phone: "",
+  message: "",
+  consent: false,
+};
+
 export function ContactForm() {
-  const [form, setForm] = useState({
-    name: "",
-    company: "",
-    email: "",
-    phone: "",
-    message: "",
-    consent: false,
-  });
+  const [form, setForm] = useState(initialContactForm);
+  const [honeypot, setHoneypot] = useState("");
   const [errors, setErrors] = useState<ContactErrors>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -514,8 +634,8 @@ export function ContactForm() {
     setErrors((prev) => ({ ...prev, [key]: undefined, form: undefined }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     const next: ContactErrors = {};
     const nameResult = nameSchema.safeParse(form.name);
     if (!nameResult.success) next.name = nameResult.error.issues[0]?.message;
@@ -537,21 +657,37 @@ export function ContactForm() {
     }
 
     setSubmitting(true);
-    const { error: insertError } = await supabase.from("leads").insert({
-      full_name: form.name.trim(),
-      email: form.email.trim(),
-      company_name: form.company.trim(),
-      phone: form.phone.trim() || null,
+    setErrors({});
+
+    const payload = {
+      formName: "Book a Fit Call / Contact",
       form_type: "health_check",
-      consent_given: true,
-      details: { message: form.message.trim() || null },
-    });
+      pageUrl: typeof window !== "undefined" ? window.location.href : "",
+      userAgent: typeof navigator !== "undefined" ? navigator.userAgent : "",
+      submittedAt: new Date().toISOString(),
+      fullName: form.name.trim(),
+      email: form.email.trim(),
+      companyName: form.company.trim(),
+      phone: form.phone.trim() || null,
+      message: form.message.trim() || null,
+      consentGiven: form.consent,
+      _hp: honeypot, // hidden spam honeypot
+    };
+
+    const res = await submitLeadPayload(payload);
     setSubmitting(false);
 
-    if (insertError) {
-      setErrors({ form: "We couldn't send your request just now. Please try again in a moment." });
+    if (!res.ok) {
+      setErrors({
+        form:
+          res.message || "We couldn't send your request just now. Please try again in a moment.",
+      });
       return;
     }
+
+    // Reset form and show success message
+    setForm(initialContactForm);
+    setHoneypot("");
     setSubmitted(true);
   };
 
@@ -576,6 +712,20 @@ export function ContactForm() {
       noValidate
       className="rounded-3xl border border-border bg-card p-6 md:p-8"
     >
+      {/* Hidden Spam Honeypot Field */}
+      <div className="hidden" aria-hidden="true" style={{ display: "none" }}>
+        <label htmlFor="contact-hp">Leave this empty</label>
+        <input
+          id="contact-hp"
+          type="text"
+          name="_hp"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <label className="flex flex-col gap-1.5 text-sm font-medium">
           Full name
@@ -646,9 +796,19 @@ export function ContactForm() {
         error={errors.consent}
       />
 
-      <div className="mt-3">
-        <FieldError message={errors.form} />
-      </div>
+      {errors.form && (
+        <div className="mt-4 flex flex-col gap-2 rounded-xl border border-destructive/30 bg-destructive/5 p-4">
+          <FieldError message={errors.form} />
+          <button
+            type="button"
+            onClick={() => handleSubmit()}
+            disabled={submitting}
+            className="inline-flex items-center gap-1.5 self-start text-xs font-semibold text-destructive underline hover:text-destructive/80"
+          >
+            <RotateCcw className="h-3 w-3" /> Retry submission
+          </button>
+        </div>
+      )}
 
       <button
         type="submit"
